@@ -1,0 +1,68 @@
+[
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "collector_created | collector_deleted | collector_updated | collector_triggered",
+        "component": "Collectors",
+        "message": "Successfully Created Collector: {{Collecto Name}}",
+        "payload": {
+            "collecor_name": "aws",
+            "collecor_decription": "value",
+            "collecto_type": "aws: 956994857092",
+            "deployment_type": "selfhost | accuknox deployed",
+            "label": "value",
+            "tag": "value",
+            "collector_type": "ondeman | scheduled"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "collector_deleted",
+        "component": "Collector",
+        "message": "Successfully Deleted Collector: {{Collecto Name}}",
+        "payload": {
+            "collecor_name": "aws",
+            "collecor_decription": "value",
+            "collecto_type": "aws: 956994857092",
+            "deployment_type": "selfhost | accuknox deployed",
+            "label": "value",
+            "tag": "value",
+            "collector_type": "ondeman | scheduled"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "collector_updated",
+        "component": "Collector",
+        "message": "Successfully Updated Collector: {{Collector Name}}",
+        "payload": {
+            "collecor_name": "aws",
+            "collecor_decription": "value",
+            "collecto_type": "aws: 956994857092",
+            "deployment_type": "selfhost | accuknox deployed",
+            "label": "value",
+            "tag": "value",
+            "collector_type": "ondeman | scheduled"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    }
+]

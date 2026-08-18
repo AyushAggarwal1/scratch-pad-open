@@ -1,0 +1,129 @@
+{
+    "client_payload": {
+        "event": {
+            "alert": {
+                "asset": {
+                    "bom_file": null,
+                    "cluster": null,
+                    "collector_name": null,
+                    "groups": [],
+                    "host_ip": null,
+                    "host_name": null,
+                    "id": "8b9dc09c-6041-4fd3-b7c3-510e95b18837",
+                    "label": "gcp",
+                    "manifest": "{}",
+                    "name": "default-allow-rdp",
+                    "namespace": null,
+                    "project_name": null,
+                    "region": {
+                        "cloud_provider": "google",
+                        "name": "global"
+                    },
+                    "registry_name": null,
+                    "resource_id": "gcp://compute.googleapis.com/projects/ak-cloudwerx/global/firewalls/default-allow-rdp",
+                    "tags": [],
+                    "type": {
+                        "alias": [
+                            "gcp_compute_firewall"
+                        ],
+                        "category": "Networking",
+                        "id": "ffbc9790-f79f-4439-be11-5a0be99aaa9e",
+                        "name": "gcp_compute_firewall"
+                    }
+                },
+                "date_discovered": "2026-05-12T02:02:13.661638Z",
+                "id": "6de0cf44-8e6b-4c82-b8fa-beaeff8e4e98",
+                "ignored": false,
+                "last_fixed": null,
+                "last_seen": "2026-06-16T08:33:54.703742Z",
+                "location": "global",
+                "misc": {
+                    "cloud_account": "ak-cloudwerx",
+                    "cloud_type": "gcp_project",
+                    "message": "Firewall Rule:(default-allow-rdp) has RDP: TCP port 3389 open to 0.0.0.0/0",
+                    "more_info": "While some ports such as HTTP and HTTPS are required to be open to the public to function properly, more sensitive services such as RDP should be restricted to known IP addresses.",
+                    "remediation_steps": "**Remediation Steps**  \n1. **Identify Open Ports**: \n   - Use the GCP Console or the `gcloud` command-line tool to list all the firewall rules that allow ingress on TCP port 3389.\n   \n2. **Access Firewall Rules**:\n   - Navigate to the VPC network and locate the \"Firewall rules\" section in the Google Cloud Console.\n\n3. **Restrict RDP Access**:\n   - Find the firewall rule allowing access to TCP port 3389 and click on \"Edit\".\n   - Under \"Source IP ranges\", change from `0.0.0.0/0` (if it exists) to specific, trusted IP addresses that require RDP access. \n\n4. **Secure the Rule**:\n   - Ensure that the rule allowing RDP access has a higher priority (lower number) than more permissive rules to ensure it takes precedence.\n\n5. **Apply Changes**:\n   - Save any changes made to the firewall rule.\n\n6. **Review and Test**:\n   - Verify the new firewall rule configuration by attempting to access the RDP service from both allowed and disallowed IP addresses to ensure proper restrictions are in place.\n\n7. **Monitor**:\n   - Continuously monitor firewall logs to detect any unauthorized attempts to access TCP port 3389."
+                },
+                "status": "False Positive",
+                "tags": [
+                    {
+                        "tag__id": "5feddc11-623c-4d93-ac4c-0e84e935a51c",
+                        "tag__value": "Networking"
+                    },
+                    {
+                        "tag__id": "dd2b47e3-734b-4c96-af80-a23e30dc73e9",
+                        "tag__value": "Public"
+                    },
+                    {
+                        "tag__id": "e7971cac-957a-4ff7-9321-a52055fa47ee",
+                        "tag__value": "Potential Exposure"
+                    },
+                    {
+                        "tag__id": "be40a9e7-9302-42dc-af80-5455bdf208e1",
+                        "tag__value": "gcp"
+                    }
+                ],
+                "ticket_ids": [],
+                "ticket_statuses": [],
+                "tickets": [],
+                "tickets_count": 0,
+                "tool_output": "FAILED",
+                "vulnerability": {
+                    "cvss_score": "0.0",
+                    "data_type": "cloudsploit",
+                    "description": "Determines if TCP port 3389 for RDP is open to the public",
+                    "exploit_available": false,
+                    "id": "e72053f4-d025-4771-8672-dc2451480f92",
+                    "identification_numbers": [],
+                    "misc": {
+                        "compliance": [
+                            "CSCRF SEBI",
+                            "Oracle CIS v3.0",
+                            "RBI IT Framework Master Direction",
+                            "ISO 27001",
+                            "RBI CSF (Cyber Security Framework) for UCBs",
+                            "SOC 2 Type II",
+                            "Digital Personal Data Protection (DPDP) Act India"
+                        ],
+                        "unique_vulnerability_name": "Open RDP"
+                    },
+                    "name": "Open RDP: global",
+                    "origin_risk_factor": "High",
+                    "references": [],
+                    "risk_factor": "High",
+                    "solution": "Restrict TCP port 3389 to known IP addresses, https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm",
+                    "tags": [
+                        {
+                            "tag__id": "e7971cac-957a-4ff7-9321-a52055fa47ee",
+                            "tag__value": "Potential Exposure"
+                        },
+                        {
+                            "tag__id": "5feddc11-623c-4d93-ac4c-0e84e935a51c",
+                            "tag__value": "Networking"
+                        },
+                        {
+                            "tag__id": "dd2b47e3-734b-4c96-af80-a23e30dc73e9",
+                            "tag__value": "Public"
+                        }
+                    ]
+                }
+            },
+            "channels": [
+                {
+                    "channel_type_id": 7,
+                    "channels_id": 52
+                }
+            ],
+            "component_name": "Finding",
+            "filters": "{\"status\": \"Active\"}",
+            "message": "Finding discovered!, rule: Rule 1",
+            "severity": "Medium",
+            "template": "",
+            "tenant_id": "10",
+            "trigger_name": "Rule 1"
+        },
+        "event_type": "alert_triggered",
+        "trigger_name": "Rule 1"
+    },
+    "event_type": "accuknox-webhook"
+}

@@ -1,0 +1,25 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762489588,
+    "_id": "690d74f5862d92146428ceb5",
+    "action": "create_ticket",
+    "component": "Rule Engine",
+    "message": "Rule executed successfully",
+    "payload": {
+        "configuration_name": "Jira Config 1",
+        "integration_name": "Jira Cloud",
+        "rule_id": "b9ff9e43-89c6-4f83-ba38-5987694e9a03",
+        "status": "created 0 ticket(s)",
+        "summary": {
+            "failed": 0,
+            "successful": 0,
+            "successful_tickets_id": "",
+            "total_tickets": 0
+        }
+    },
+    "result": "Ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-07 04:26:28.961536+00:00",
+    "type": "action",
+    "user": "system"
+}

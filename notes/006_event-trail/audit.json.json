@@ -1,0 +1,28 @@
+{
+    "client_payload": {
+        "event": {
+            "action": "user_invitation",
+            "component": "User Management",
+            "id": "b7cd7042-67e2-4924-b845-2c67fdeb583e",
+            "message": "User Invitation Failure - User profile with email ayush@accuknox.com already exists.",
+            "payload": {
+                "error_details": [
+                    "User profile with email ayush@accuknox.com already exists."
+                ],
+                "user": {
+                    "email": "ayush@accuknox.com",
+                    "first_name": "Ayush",
+                    "last_name": "Aggarwal"
+                }
+            },
+            "result": "Fail",
+            "tenant_id": "10",
+            "timestamp": "2026-06-16 16:57:59.356771+00:00",
+            "type": "action",
+            "user": "System"
+        },
+        "event_type": "alert_triggered",
+        "trigger_name": "Sumo Logic Send Log"
+    },
+    "event_type": "accuknox-webhook"
+}

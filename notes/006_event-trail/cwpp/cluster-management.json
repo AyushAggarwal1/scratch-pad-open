@@ -1,0 +1,42 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762147477,
+    "_id": "69083c955d68d4a12f28ebb8",
+    "action": "cluster_deboarded",
+    "component": "Cluster Management",
+    "message": "Cluster Deboarded Successfully",
+    "payload": {
+        "cluster_id": 3275,
+        "cluster_name": "Demo",
+        "cluster_status": "Deleted",
+        "cluster_type": "K8s"
+    },
+    "result": "ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-03T05:24:37.958685524Z",
+    "type": "action",
+    "user": "ayush@accuknox.com"
+}
+
+**cluster status changed**
+
+{
+    "Suppressed": false,
+    "Timestamp": 1767589806,
+    "_id": "695b47ae515c9ab6e60dfb92",
+    "action": "cluster_status_changed",
+    "component": "Cluster Management",
+    "message": "Cluster Status Changed: {{cluster_status}}",
+    "payload": {
+        "cluster_id": 3691,
+        "cluster_name": "Cluster-4",
+        "cluster_status": "Inactive",
+        "previous_cluster_status": "Active",
+        "cluster_type": "K8s"
+    },
+    "result": "ok",
+    "tenant_id": "33",
+    "timestamp": "2026-01-05T05:10:06.140131768Z",
+    "type": "action",
+    "user": "system"
+}

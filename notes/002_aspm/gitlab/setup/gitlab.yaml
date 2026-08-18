@@ -1,0 +1,28 @@
+
+docker network create gitlab-net
+
+docker run -d \
+  --hostname gitlab \
+  --network gitlab-net \
+  --publish 8080:80 \
+  --publish 8443:443 \
+  --publish 2222:22 \
+  --name gitlab \
+  --restart always \
+  -v gitlab_config:/etc/gitlab \
+  -v gitlab_logs:/var/log/gitlab \
+  -v gitlab_data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+
+docker run -d --name gitlab-runner \
+  --network gitlab-net \
+  --restart always \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+
+#  login           root, NewStrongPassword123
+#  gitlab-config   nano /etc/gitlab/gitlab.rb
+#  runner-config   nano /etc/gitlab-runner/config.toml
+#  runner-conf     alpine:latest
+#  token-read.     glpat-4IA7882lrh1Z2N3QkmiYHW86MQp1OjEH.01.0w18mprv3

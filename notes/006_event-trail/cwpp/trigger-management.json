@@ -1,0 +1,24 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762491058,
+    "_id": "690d7ab2862d92146428cebd",
+    "action": "trigger_created | trigger_updated | trigger_deleted",
+    "component": "Trigger Management",
+    "message": "API Response",
+    "payload": {
+        "trigger_id": "123",
+        "trigger_name": "Trigger 1",
+        "trigger_description": "Trigger Description",
+        "trigger_action": "action:create_ticket",
+        "filter_query": "Filter Query",
+        "enabled": true | false,
+        "notification_channel_type": "Email | Slack | Webhook",   // it can be multiple
+        "notification_channel_id": "123",                         // it can be multiple
+        "notification_channel_name": "Channel 1"                  // it can be multiple
+    },
+    "result": "Ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-07 04:50:58.798949+00:00",
+    "type": "action",
+    "user": "ayush@accuknox.com"
+}

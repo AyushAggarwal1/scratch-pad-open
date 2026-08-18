@@ -1,0 +1,90 @@
+[
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "cloud_onboarded | cloud_deonboarded | cloud_updated | cloud_status_changed",
+        "component": "Cloud Account",
+        "message": "Successfully onboarded aws: 956994857092",
+        "payload": {
+            "cloud_type": "aws",
+            "cloud_variable_name": "aws: 956994857092",
+            "connected": true,
+            "is_active": true,
+            "label": "{{label__name}}",
+            "tag": "{{tag__name}}",
+            "scan_type": "gca | aiml"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "cloud_deonboarded",
+        "component": "Cloud Account",
+        "message": "Successfully Deboarded aws: 956994857092",
+        "payload": {
+            "cloud_type": "aws",
+            "cloud_variable_name": "aws: 956994857092",
+            "connected": true,
+            "is_active": true,
+            "label": "{{label__name}}",
+            "tag": "{{tag__name}}",
+            "scan_type": "gca | aiml"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "cloud_updated | cloud_status_changed",
+        "component": "Cloud Account",
+        "message": "Successfully Updated aws: 956994857092",
+        "payload": {
+            "cloud_type": "aws",
+            "cloud_variable_name": "aws: 956994857092",
+            "connected": true,
+            "is_active": true,
+            "label": "{{label__name}}",
+            "tag": "{{tag__name}}",
+            "scan_type": "gca | aiml"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776845300,
+        "_id": "69e881fc4b52bbe907328798",
+        "action": "cloud_status_changed",
+        "component": "Cloud Account",
+        "message": "Cloud Account aws: 956994857092 Status Changed",
+        "payload": {
+            "cloud_type": "aws",
+            "cloud_variable_name": "aws: 956994857092",
+            "connected": false,
+            "is_active": false,
+            "label": "{{label__name}}",
+            "tag": "{{tag__name}}",
+            "scan_type": "gca | aiml"
+        },
+        "result": "Ok",
+        "tenant_id": "17",
+        "timestamp": "2026-04-22 08:08:20.040553+00:00",
+        "type": "action",
+        "user": "ravi.kishor@accuknox.com"
+    }
+]

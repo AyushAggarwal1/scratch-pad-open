@@ -1,0 +1,18 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762487309,
+    "_id": "690d6c0d862d92146428ce00",
+    "action": "channel_integrated",
+    "component": "Channel Integration",
+    "message": "Channel Added Successfully",
+    "payload": {
+        "channel_id": 493,
+        "channel_type_id": 7,
+        "integration_name": "owe"
+    },
+    "result": "ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-07T03:48:29.331616877Z",
+    "type": "action",
+    "user": "ayush@accuknox.com"
+}

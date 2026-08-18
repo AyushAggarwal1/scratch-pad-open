@@ -1,0 +1,18 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762491058,
+    "_id": "690d7ab2862d92146428cebd",
+    "action": "user_invited",
+    "component": "User Management",
+    "message": "User Invited",
+    "payload": {
+        "invite_status": "sent",
+        "invited_user": "ayesha+123@accuknox.com",
+        "role_assigned": "Admin"
+    },
+    "result": "Ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-07 04:50:58.798949+00:00",
+    "type": "action",
+    "user": "ayush@accuknox.com"
+}

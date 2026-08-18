@@ -1,7 +1,7 @@
 ---
 title: CIEM
 parent: Notes
-nav_order: 1
+nav_order: 4
 has_children: true
 has_toc: false
 description: "PRDs for CIEM — Cloud Identity & Entitlement Management: permission discovery, usage analysis, and least-privilege recommendations."

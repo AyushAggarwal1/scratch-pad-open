@@ -1,0 +1,48 @@
+[
+    {
+        "Suppressed": false,
+        "Timestamp": 1776993600,
+        "_id": "69f0b3d45e6f789012345678",
+        "action": "scan_completed",
+        "component": "Parser",
+        "message": "Parsing completed for {{data-type}} scan",
+        "payload": {
+            "scan_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+            "data_type": "Trivy",
+            "scan_file": "fileName",
+            "scan_date": "2026-04-24 07:45:00+00:00",
+            "label": "production-gcp",
+            "status": "completed",
+            "assets_affected": 12,
+            "findings_count": 47,
+            "error_summary": ""
+        },
+        "result": "Completed",
+        "tenant_id": "17",
+        "timestamp": "2026-04-24 09:20:00.000000+00:00",
+        "type": "action",
+        "user": "system"
+    },
+    {
+        "Suppressed": false,
+        "Timestamp": 1776990000,
+        "_id": "69f0c4e56f7890123456789a",
+        "action": "scan_failed",
+        "component": "Parser",
+        "message": "Parsing failed for {{data-type}} scan",
+        "payload": {
+            "scan_id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
+            "data_type": "NS",
+            "scan_file": "accuknox-label/nessus-scan-2026-04-24.nessus",
+            "scan_date": "2026-04-24 07:50:00+00:00",
+            "label": "production-aws",
+            "status": "failed",
+            "error_summary": "Duplicate vulnerability entry encountered during bulk create"
+        },
+        "result": "Fail",
+        "tenant_id": "17",
+        "timestamp": "2026-04-24 08:20:00.000000+00:00",
+        "type": "action",
+        "user": "system"
+    }
+]

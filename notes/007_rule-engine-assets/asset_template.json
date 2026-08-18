@@ -1,0 +1,9 @@
+{
+    "name": "Asset",
+    "data_type": "asset",
+    "title_template": "{{ name }}",
+    "dynamic_template": "| {{ id }} | {{ name }} | {{ type }} | {{ findings_count }} | {{ resource_id }} | {{ label }} | {{ region }} | {{ parent }} | {{ original_source }} | {{ source_type }} | {{ source_id }} | {{ last_seen }} | {{ last_seen_date }} | {{ date_discovered }} | {{ data_type }} | {{ record_state }} | {{ category }} | {{ host_name }} | {{ purl }} | {{ published_at }} | {% for t in tags %}{{ t.tag__value }}{% if not forloop.last %}, {% endif %}{% endfor %} | {{ data }} |",
+    "static_template": "| ID | Asset | Type | Findings Count | Resource ID | Label | Region | Parent | Original Source | Source Type | Source ID | Last Seen | Last Seen Date | Date Discovered | Data Type | Record State | Category | Host Name | Purl | Published At | Tags | Data |\n| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |\n{{ dynamic_template }}",
+    "attachment_template": "",
+    "attachment": false
+}

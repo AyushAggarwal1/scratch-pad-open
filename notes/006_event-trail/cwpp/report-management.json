@@ -1,0 +1,25 @@
+{
+    "Suppressed": false,
+    "Timestamp": 1762491058,
+    "_id": "690d7ab2862d92146428cebd",
+    "action": "report_created | report_updated | report_deleted | report_run",
+    "component": "Report Management",
+    "message": "API Response",
+    "payload": {
+        "report_id": "123",
+        "report_name": "Report 1",
+        "report_description": "Report Description",
+        "report_type": "CSPM | ASPM | AISPM",
+        "report_generation_type": "Scheduled | On Demand",
+        "cluster-namespaces": ["cluster1/namespace1", "cluster2/namespace2"],
+        "report_recipients": ["email1@example.com", "email2@example.com"],
+        "report_period": "now-3d",
+        "report_schedule": "* 10 * * *",
+        "report_status": "Pending | Failed | Success"
+    },
+    "result": "Ok",
+    "tenant_id": "19",
+    "timestamp": "2025-11-07 04:50:58.798949+00:00",
+    "type": "action",
+    "user": "ayush@accuknox.com"
+}

@@ -1,0 +1,34 @@
+{
+  "request": {
+    "request_type": {
+      "name": "Incident"
+    },
+    "subject": "This is Title",
+    "description": "This is Updated Description",
+    "priority": {
+      "name": "High"
+    },
+    "group": {
+      "name": "ayush_custom_group",
+      "id": "25705000000294013"
+    },
+    "requester": {
+      "name": "accuknox"
+    },
+    "udf_fields": {
+      "txt_type": "this is mandatory custom field"
+    },
+    "status": {
+      "name": "Open"
+    },
+    "template": {
+      "name": "custom_incident_template",
+      "id": "25705000000294034"
+    },
+    "technician": {
+      "email_id": "charles@zmail.com",
+      "id": "25705000000284327",
+      "name": "AccuKnox"
+    }
+  }
+}
