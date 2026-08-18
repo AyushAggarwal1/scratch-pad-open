@@ -1,4 +1,7 @@
-## title: Open Source Notepad
+---
+layout: default
+title: Open Source Notepad
+---
 
 # Open Source Notepad
 

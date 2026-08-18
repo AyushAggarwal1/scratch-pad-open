@@ -1,0 +1,9 @@
+title: Open Source Notepad
+
+description: >
+  My open source notepad — the public version of my Scratchpad.
+  A collection of notes, references, commands, ideas, and things I learn.
+
+theme: jekyll-theme-minimal
+
+markdown: kramdown
