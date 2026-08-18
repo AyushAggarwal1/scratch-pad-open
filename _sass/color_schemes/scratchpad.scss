@@ -1,0 +1,57 @@
+// ------------------------------------------------------------------
+// "scratchpad" — the site's default light scheme.
+// Pure white surfaces with cool hairline borders, raspberry accents for
+// interactive elements, and a small amber highlighter accent.
+// Layout polish lives in _sass/custom/custom.scss.
+// ------------------------------------------------------------------
+
+$color-scheme: scratchpad;
+
+// Typography — IBM Plex family, loaded in _includes/head_custom.html
+$body-font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI",
+  roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+$mono-font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", menlo,
+  consolas, monospace;
+
+$body-line-height: 1.5;
+$content-line-height: 1.66;
+$body-heading-line-height: 1.22;
+
+// Slightly larger reading size for long documents (base content text)
+$font-size-4: 0.9375rem;
+
+// Shape & measure
+$border-radius: 6px;
+$content-width: 52rem;
+$nav-width: 17.25rem;
+$nav-width-md: 16rem;
+
+// Pure white paper
+$body-background-color: #ffffff;
+$body-heading-color: #171c23;
+$body-text-color: #3d4550;
+$border-color: #e6e8ea;
+
+// Ink (interactive)
+$link-color: #b02458;
+$btn-primary-color: #b02458;
+$base-button-color: #f6f7f8;
+
+// Sidebar — white as well, separated by a hairline border
+$sidebar-color: #ffffff;
+$feedback-color: #f3f5f6; // hover wash
+$nav-child-link-color: #57606b;
+
+// Panels
+$code-background-color: #f7f8f9;
+$table-background-color: #ffffff;
+$search-background-color: #ffffff;
+$search-result-preview-color: #4b535e;
+
+// Custom tokens used by _sass/custom/custom.scss
+$osn-nav-active-color: #b02458;
+$osn-accent: #e0a63f; // amber highlighter
+$osn-accent-deep: #c68d2c; // amber with enough contrast on white
+$osn-accent-soft: rgba(224, 166, 63, 0.32); // hero highlight sweep
+$osn-card-bg: #ffffff;
+$osn-card-soon-bg: #fafbfb;

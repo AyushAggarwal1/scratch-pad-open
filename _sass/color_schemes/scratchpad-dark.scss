@@ -1,0 +1,66 @@
+// ------------------------------------------------------------------
+// "scratchpad-dark" — night counterpart of the scratchpad scheme,
+// reached via the toggle in the sidebar footer. Starts from the
+// theme's dark scheme (github-dark syntax colors), then applies the
+// notepad palette: night paper, raspberry links, amber accents.
+// ------------------------------------------------------------------
+
+@import "./color_schemes/dark";
+
+$color-scheme: scratchpad-dark;
+
+// Typography — must match the light scheme
+$body-font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI",
+  roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+$mono-font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", menlo,
+  consolas, monospace;
+
+$body-line-height: 1.5;
+$content-line-height: 1.66;
+$body-heading-line-height: 1.22;
+$font-size-4: 0.9375rem;
+
+$border-radius: 6px;
+$content-width: 52rem;
+$nav-width: 17.25rem;
+$nav-width-md: 16rem;
+
+// Night paper
+$body-background-color: #14181f;
+$body-heading-color: #e9edf3;
+$body-text-color: #c2c9d4;
+$border-color: #2a313c;
+
+// Ink (interactive)
+$link-color: #f085ad;
+$btn-primary-color: #b3305f;
+$base-button-color: #1c232e;
+
+// Sidebar — slightly lifted against the night body
+$sidebar-color: #1d222b;
+$feedback-color: #262c37;
+$nav-child-link-color: #9aa4b2;
+
+// Panels
+$code-background-color: #0d1117;
+$code-linenumber-color: #e6edf3;
+$table-background-color: #191f28;
+$search-background-color: #191f28;
+$search-result-preview-color: #9aa4b2;
+
+// Brighten the -300 shades: on the night background they drive
+// callout borders/titles and label chips, and the stock values are
+// too dark to read.
+$blue-300: #5b8def;
+$purple-300: #9d8bf0;
+$green-300: #2f9e6e;
+$red-300: #e05252;
+$yellow-300: #d9a514;
+
+// Custom tokens used by _sass/custom/custom.scss
+$osn-accent: #e0a63f;
+$osn-accent-deep: #e5ae4f; // amber needs to be brighter on dark surfaces
+$osn-accent-soft: rgba(224, 166, 63, 0.28);
+$osn-nav-active-color: #ecc069; // current page marker: amber at night
+$osn-card-bg: #191f28;
+$osn-card-soon-bg: #171c24;

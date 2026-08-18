@@ -1,0 +1,447 @@
+// ------------------------------------------------------------------
+// Open Source Notepad — custom styling on top of Just the Docs.
+//
+// Everything here is driven by scheme variables, so it compiles into
+// both the light ("scratchpad") and dark ("scratchpad-dark") builds:
+// warm paper surfaces, raspberry interactive elements, and a small
+// amber highlighter accent.
+// ------------------------------------------------------------------
+
+// Fallbacks so the stock `light`/`dark` stylesheets (also compiled by
+// the theme) build cleanly; the scratchpad schemes override these.
+$osn-accent: #e0a63f !default;
+$osn-accent-deep: #c68d2c !default;
+$osn-accent-soft: rgba(224, 166, 63, 0.34) !default;
+$osn-nav-active-color: #b02458 !default;
+$osn-card-bg: #ffffff !default;
+$osn-card-soon-bg: #f7f7f2 !default;
+
+// ------------------------------------------------------------------
+// Sidebar
+// ------------------------------------------------------------------
+
+.site-title {
+  font-family: $mono-font-family;
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+
+  &::before {
+    margin-right: 0.5rem;
+    color: $osn-accent-deep;
+    content: "▍";
+    animation: osn-blink 1.4s step-end infinite;
+  }
+}
+
+@keyframes osn-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+// Current page: quiet wash + inked bar instead of the theme gradient
+.side-bar .nav-list .nav-list-item .nav-list-link.active {
+  color: $osn-nav-active-color;
+  background-color: rgba($osn-nav-active-color, 0.07);
+  background-image: none;
+  box-shadow: inset 2px 0 0 $osn-nav-active-color;
+}
+
+// Sidebar footer (holds the scheme toggle)
+.side-bar .site-footer {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-top: 1px solid $border-color;
+}
+
+// ------------------------------------------------------------------
+// Scheme toggle button
+// ------------------------------------------------------------------
+
+.scheme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.65rem;
+  font-family: $mono-font-family;
+  font-size: 0.71875rem;
+  line-height: 1;
+  color: $body-text-color;
+  cursor: pointer;
+  background-color: $base-button-color;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  transition: color 150ms ease, border-color 150ms ease;
+
+  svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    color: $osn-accent-deep;
+  }
+
+  .icon-sun {
+    display: none;
+  }
+
+  &.is-dark .icon-moon {
+    display: none;
+  }
+
+  &.is-dark .icon-sun {
+    display: inline-block;
+  }
+
+  &:hover {
+    color: $link-color;
+    border-color: $link-color;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $link-color;
+    outline-offset: 2px;
+  }
+}
+
+// ------------------------------------------------------------------
+// Content typography
+// ------------------------------------------------------------------
+
+.main-content {
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h3,
+  h4,
+  h5 {
+    font-weight: 600;
+  }
+
+  // Ruled line above each section, like a fresh notebook entry
+  h2:not(.text-delta) {
+    margin-top: 2.75rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid $border-color;
+  }
+
+  hr {
+    height: 1px;
+    margin: 2rem 0;
+    background-color: $border-color;
+    border: 0;
+  }
+}
+
+::selection {
+  background: $osn-accent-soft;
+}
+
+// Meta chips under document titles (`{: .label }` paragraphs)
+.main-content p.label {
+  margin-right: 0.25rem;
+  margin-left: 0;
+}
+
+// ------------------------------------------------------------------
+// "On this page" panel (kramdown TOC)
+// ------------------------------------------------------------------
+
+.main-content #markdown-toc {
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 2rem;
+  font-size: 0.84375rem;
+  list-style: none;
+  background-color: $code-background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+
+  @include mq(sm) {
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  li {
+    margin: 0.2rem 0;
+    break-inside: avoid;
+  }
+
+  a {
+    color: $body-text-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $link-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+// ------------------------------------------------------------------
+// Panels: code, tables
+// ------------------------------------------------------------------
+
+.main-content div.highlighter-rouge {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.table-wrapper {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: none;
+}
+
+// ------------------------------------------------------------------
+// Home page
+// ------------------------------------------------------------------
+
+.home-eyebrow {
+  margin-bottom: 0.5rem;
+  font-family: $mono-font-family;
+  font-size: 0.78125rem;
+  letter-spacing: 0.04em;
+  color: $link-color;
+
+  .home-eyebrow-tick {
+    color: $osn-accent-deep;
+  }
+}
+
+.main-content h1.home-hero {
+  max-width: 34rem;
+  margin-top: 0.25rem;
+  font-size: 2.125rem !important;
+  line-height: 1.15;
+
+  @include mq(sm) {
+    font-size: 2.75rem !important;
+  }
+}
+
+.hl-sweep {
+  background-image: linear-gradient(
+    180deg,
+    transparent 58%,
+    $osn-accent-soft 58%,
+    $osn-accent-soft 94%,
+    transparent 94%
+  );
+  box-decoration-break: clone;
+}
+
+.home-lede {
+  max-width: 38rem;
+  font-size: 1.0625rem;
+  color: $body-text-color;
+}
+
+// Shelf: section cards
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.main-content .shelf-card {
+  display: block;
+  padding: 1.1rem 1.2rem;
+  color: $body-text-color;
+  text-decoration: none;
+  background-color: $osn-card-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  transition: border-color 150ms ease, transform 150ms ease,
+    box-shadow 150ms ease;
+
+  .shelf-head {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+  }
+
+  .shelf-icon {
+    display: inline-flex;
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: $link-color;
+    background-color: rgba($link-color, 0.08);
+    border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .shelf-path {
+    font-family: $mono-font-family;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: $link-color;
+  }
+
+  .shelf-chip {
+    margin-left: auto;
+    padding: 0.1rem 0.55rem;
+    font-family: $mono-font-family;
+    font-size: 0.65625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $body-text-color;
+    border: 1px solid $border-color;
+    border-radius: 999px;
+    opacity: 0.8;
+  }
+
+  strong {
+    display: block;
+    margin-top: 0.55rem;
+    color: $body-heading-color;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    font-size: 0.84375rem;
+    line-height: 1.55;
+  }
+}
+
+a.shelf-card:hover {
+  background-image: none;
+  border-color: $link-color;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+
+.main-content .shelf-card.is-soon {
+  background-color: $osn-card-soon-bg;
+  border-style: dashed;
+  opacity: 0.78;
+}
+
+.main-content .shelf-more {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: $body-text-color;
+  opacity: 0.65;
+}
+
+// Icon list ("How this notepad works")
+.main-content ul.how-list {
+  display: grid;
+  gap: 0.8rem;
+  padding-left: 0;
+  margin: 1.25rem 0 0;
+  list-style: none;
+
+  > li {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding-left: 0;
+    margin: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .how-icon {
+    display: inline-flex;
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: 0.1rem;
+    color: $link-color;
+    background-color: rgba($link-color, 0.08);
+    border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  strong {
+    color: $body-heading-color;
+  }
+}
+
+// ------------------------------------------------------------------
+// Footer social links
+// ------------------------------------------------------------------
+
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+footer .footer-social-link {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  color: $body-text-color;
+  text-decoration: none;
+  background-color: $base-button-color;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+  transition: color 150ms ease, border-color 150ms ease;
+
+  svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  &:hover {
+    color: $link-color;
+    border-color: $link-color;
+    background-image: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $link-color;
+    outline-offset: 2px;
+  }
+}
+
+// ------------------------------------------------------------------
+// Motion preferences
+// ------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  .site-title::before {
+    animation: none;
+  }
+
+  .main-content .shelf-card,
+  .scheme-toggle,
+  footer .footer-social-link {
+    transition: none;
+  }
+
+  a.shelf-card:hover {
+    transform: none;
+  }
+}

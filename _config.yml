@@ -1,9 +1,123 @@
+# ------------------------------------------------------------------
+# Open Source Notepad — site configuration
+# Theme: Just the Docs (pinned release, loaded via jekyll-remote-theme)
+# Docs: https://just-the-docs.com
+# ------------------------------------------------------------------
+
 title: Open Source Notepad
+description: >-
+  The public half of my scratchpad — PRDs, commands, references,
+  and field notes from building cloud-security products.
 
-description: >
-  My open source notepad — the public version of my Scratchpad.
-  A collection of notes, references, commands, ideas, and things I learn.
+url: "https://ayushaggarwal1.github.io"
+baseurl: "/scratch-pad-open"
+repository: AyushAggarwal1/scratch-pad-open
 
-theme: jekyll-theme-minimal
+remote_theme: just-the-docs/just-the-docs@v0.12.0
 
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+  - jekyll-include-cache
+  - jekyll-sitemap
+
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .jekyll-cache/
+  - .sass-cache/
+
+# --- Color scheme --------------------------------------------------
+# "scratchpad" is the custom light scheme (_sass/color_schemes/).
+# A dark counterpart, "scratchpad-dark", is wired to the toggle in
+# the sidebar footer (_includes/nav_footer_custom.html).
+color_scheme: scratchpad
+
+# --- Search ---------------------------------------------------------
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 4
+  preview_words_after: 8
+  rel_url: false
+  button: false
+  focus_shortcut_key: "k"
+
+enable_copy_code_button: true
+heading_anchors: true
+
+# --- Navigation -----------------------------------------------------
+aux_links:
+  "GitHub":
+    - "https://github.com/AyushAggarwal1/scratch-pad-open"
+aux_links_new_tab: true
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# "Edit this page on GitHub" link in the footer of every page
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/AyushAggarwal1/scratch-pad-open"
+gh_edit_branch: "main"
+gh_edit_view_mode: "tree"
+
+footer_content: >-
+  © 2026 Ayush Aggarwal. Notes are living documents — they change as I
+  learn, update, and reorganize them.
+
+# --- Callouts -------------------------------------------------------
+# Usage:  {: .note }  {: .important }  {: .warning }  {: .new }
+callouts:
+  note:
+    title: Note
+    color: blue
+  important:
+    title: Important
+    color: purple
+  warning:
+    title: Warning
+    color: red
+  new:
+    title: New
+    color: green
+  highlight:
+    color: yellow
+
+# --- Mermaid (opt-in) ----------------------------------------------
+# Uncomment to render ```mermaid``` code fences as diagrams.
+# mermaid:
+#   version: "11.4.1"
+
+# --- Markdown -------------------------------------------------------
 markdown: kramdown
+kramdown:
+  toc_levels: [2]
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+sass:
+  quiet_deps: true
+  silence_deprecations: ['import']
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false

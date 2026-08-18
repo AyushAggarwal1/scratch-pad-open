@@ -1,10 +1,27 @@
-# Product Requirements Document (PRD): CIEM Permission Optimization
+---
+title: Permission Recommendation
+parent: CIEM
+grand_parent: Notes
+nav_order: 1
+description: "PRD: compare the permissions cloud identities hold with the ones they exercised across AWS, GCP, Azure, and OCI, and recommend a least-privilege set."
+---
 
-| Field | Value |
-|---|---|
-| Status | Draft v0.1 |
-| Author | Ayush (TPM) |
-| Module | CIEM (CNAPP platform) |
+# CIEM Permission Optimization
+
+Draft v0.1
+{: .label .label-yellow }
+Phase 1
+{: .label .label-blue }
+CIEM · CNAPP
+{: .label .label-purple }
+
+A PRD for continuously enforcing least privilege: compare what cloud identities *can* do with what they *actually did*, then recommend the smallest safe permission set.
+
+## On this page
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
 
 ## 1. Overview
 
@@ -58,9 +75,7 @@ The product should help security and cloud teams answer:
 4. **What is the minimum recommended permission set for this user?**
 5. **What changes should be made to achieve least privilege?**
 
----
-
-# 2. Goals
+## 2. Goals
 
 The primary goal is to enable organizations to continuously enforce the principle of least privilege across multiple cloud providers.
 
@@ -75,9 +90,7 @@ The product should:
 * Allow administrators to configure the activity analysis period.
 * Support multiple cloud providers through a normalized CIEM permission model.
 
----
-
-# 3. Non-Goals
+## 3. Non-Goals
 
 The initial version will not attempt to:
 
@@ -91,11 +104,9 @@ The initial version will not attempt to:
 
 Future versions may support automated remediation and Just-in-Time access.
 
----
+## 4. Target Users
 
-# 4. Target Users
-
-## 4.1 Cloud Security Engineer
+### 4.1 Cloud Security Engineer
 
 Responsible for monitoring excessive permissions and reducing cloud access risks.
 
@@ -107,7 +118,7 @@ Primary needs:
 * Generate least-privilege recommendations.
 * Track remediation.
 
-## 4.2 IAM Administrator
+### 4.2 IAM Administrator
 
 Responsible for managing cloud users, roles, groups, and policies.
 
@@ -118,7 +129,7 @@ Primary needs:
 * Convert recommendations into IAM changes.
 * Avoid accidentally removing required permissions.
 
-## 4.3 SOC Analyst
+### 4.3 SOC Analyst
 
 Responsible for investigating suspicious cloud activity.
 
@@ -129,7 +140,7 @@ Primary needs:
 * Identify privilege escalation paths.
 * Investigate unusual permission usage.
 
-## 4.4 Security Leadership / CISO
+### 4.4 Security Leadership / CISO
 
 Primary needs:
 
@@ -138,11 +149,9 @@ Primary needs:
 * Understand organization-wide CIEM posture.
 * Monitor least-privilege adoption.
 
----
+## 5. Key Concepts
 
-# 5. Key Concepts
-
-## 5.1 Identity
+### 5.1 Identity
 
 An entity capable of performing actions within a cloud environment.
 
@@ -160,9 +169,7 @@ Examples:
 
 Although the initial requirement focuses on users, the architecture should support other identities because machine identities often hold significant cloud privileges.
 
----
-
-## 5.2 Assigned Permission
+### 5.2 Assigned Permission
 
 A permission that an identity can theoretically exercise based on the organization's IAM configuration.
 
@@ -186,9 +193,7 @@ s3:PutObject
 s3:DeleteObject
 ```
 
----
-
-## 5.3 Effective Permission (Not In SCOPE for NOW)
+### 5.3 Effective Permission (Not In SCOPE for NOW)
 
 The final permission an identity can exercise after evaluating all applicable IAM policies and controls.
 
@@ -220,9 +225,7 @@ s3:PutObject
 
 The CIEM engine should reason about **effective permissions**, rather than simply listing IAM policies.
 
----
-
-## 5.4 Used Permission
+### 5.4 Used Permission
 
 A permission inferred from a cloud activity event during the configured analysis period.
 
@@ -242,9 +245,7 @@ Normalized permission:
 s3:GetObject
 ```
 
----
-
-## 5.5 Unused Permission
+### 5.5 Unused Permission
 
 An effective permission for which no evidence of usage exists during the configured analysis period.
 
@@ -257,35 +258,31 @@ Observed Used Permissions
 
 Unused permissions should not automatically be treated as safe to remove. They represent candidates for least-privilege remediation.
 
----
+## 6. User Stories
 
-# 6. User Stories
-
-## Identity Discovery
+### Identity Discovery
 
 As a Cloud Security Engineer, I want to see all identities across my connected cloud environments so that I can understand who has access to cloud resources.
 
-## Assigned Permissions
+### Assigned Permissions
 
 As an IAM Administrator, I want to see all effective permissions assigned to a user so that I understand their actual authorization capabilities.
 
-## Permission Usage
+### Permission Usage
 
 As a Cloud Security Engineer, I want to see which permissions a user exercised during the last X days so that I can differentiate required and unused permissions.
 
-## Least Privilege
+### Least Privilege
 
 As an IAM Administrator, I want recommendations for permissions that can potentially be removed so that I can reduce excessive access.
 
-## Evidence
+### Evidence
 
 As a Security Engineer, I want to see the activity events supporting each used permission so that I can trust the recommendation.
 
----
+## 7. Functional Requirements
 
-# 7. Functional Requirements
-
-# FR-1: Cloud Account Onboarding
+## FR-1: Cloud Account Onboarding
 
 The system must allow administrators to connect cloud environments.
 
@@ -315,9 +312,7 @@ Supported initial integrations:
 
 The integration should operate using read-only permissions wherever possible.
 
----
-
-# FR-2: Identity Discovery
+## FR-2: Identity Discovery
 
 The system must discover identities from each cloud provider.
 
@@ -349,9 +344,7 @@ Federated Identity
 Machine Identity
 ```
 
----
-
-# FR-3: Permission Discovery
+## FR-3: Permission Discovery
 
 The system must determine permissions assigned to each identity.
 
@@ -367,9 +360,7 @@ Example:
 
 The system must support permissions inherited through groups and roles.
 
----
-
-# FR-4: Effective Permission Calculation
+## FR-4: Effective Permission Calculation
 
 The system must calculate the effective permission set for each identity.
 
@@ -431,9 +422,7 @@ Potential inputs include:
 * Identity domains
 * Policy inheritance
 
----
-
-# FR-5: Activity Log Collection
+## FR-5: Activity Log Collection
 
 The system must collect activity data from native cloud audit systems.
 
@@ -477,9 +466,7 @@ OCI Audit
 
 The ingestion pipeline should normalize events into a common CIEM activity schema.
 
----
-
-# FR-6: Configurable Analysis Window (Tenant Specific)
+## FR-6: Configurable Analysis Window (Tenant Specific)
 
 Administrators must be able to select the historical usage period.
 
@@ -507,9 +494,7 @@ Example:
 
 > Permission `s3:DeleteBucket` has not been observed between May 20 and August 18.
 
----
-
-# FR-7: Activity-to-Permission Mapping
+## FR-7: Activity-to-Permission Mapping
 
 The system must map cloud audit events to IAM permissions.
 
@@ -540,9 +525,7 @@ Normalized internal representation:
 
 Provider-specific mapping libraries should be maintained by the platform.
 
----
-
-# FR-8: Permission Usage Analysis
+## FR-8: Permission Usage Analysis
 
 For each identity, classify permissions into:
 
@@ -575,9 +558,7 @@ Potential reasons:
 
 Unknown permissions must never automatically be treated as unused.
 
----
-
-# FR-9: Effective Permission Recommendation
+## FR-9: Effective Permission Recommendation
 
 The system must produce a recommended permission set.
 
@@ -633,9 +614,7 @@ s3:DeleteBucket
 s3:CreateBucket
 ```
 
----
-
-# FR-10: Permission Recommendation Confidence
+## FR-10: Permission Recommendation Confidence
 
 Each recommendation should contain a confidence level.
 
@@ -669,9 +648,7 @@ Confidence:
 High
 ```
 
----
-
-# FR-11: Permission Risk Classification
+## FR-11: Permission Risk Classification
 
 Permissions should be classified by security impact.
 
@@ -705,9 +682,7 @@ ec2:TerminateInstances
 
 Risk information should help administrators prioritize unused permissions.
 
----
-
-# FR-12: Identity Risk Score
+## FR-12: Identity Risk Score
 
 Each identity should receive an entitlement risk score.
 
@@ -738,9 +713,7 @@ Critical Findings:
 1 unused credential-management permission
 ```
 
----
-
-# FR-13: Permission Detail View
+## FR-13: Permission Detail View
 
 Administrators must be able to inspect a permission.
 
@@ -781,9 +754,7 @@ Confidence
 High
 ```
 
----
-
-# FR-14: Usage Evidence
+## FR-14: Usage Evidence
 
 For permissions classified as used, the system should provide supporting activity.
 
@@ -809,9 +780,7 @@ prod-reporting
 
 Users should be able to drill into associated audit events.
 
----
-
-# FR-15: Recommendation Explanation
+## FR-15: Recommendation Explanation
 
 Every recommendation must explain why it exists.
 
@@ -837,9 +806,7 @@ Permission risk classification: High.
 Recommendation confidence: High.
 ```
 
----
-
-# FR-16: Recommended Role / Policy Generation
+## FR-16: Recommended Role / Policy Generation
 
 Where technically feasible, the product should create a suggested least-privilege policy.
 
@@ -872,9 +839,7 @@ Equivalent recommendation artifacts may include:
 
 Generated policies should be recommendations only in the initial release.
 
----
-
-# FR-17: Resource Scope Analysis
+## FR-17: Resource Scope Analysis
 
 Permissions should be analyzed together with their resource scope.
 
@@ -908,9 +873,7 @@ AND
 Resource scope reduction
 ```
 
----
-
-# FR-18: Wildcard Permission Expansion
+## FR-18: Wildcard Permission Expansion
 
 The engine must analyze wildcard permissions.
 
@@ -930,9 +893,7 @@ ec2:Describe*
 
 must be interpreted as the corresponding matching EC2 permissions.
 
----
-
-# FR-19: Group-Level Recommendations
+## FR-19: Group-Level Recommendations
 
 If excessive permissions are inherited through a group, the system should indicate whether modifying the group would impact other identities.
 
@@ -957,9 +918,7 @@ Do not modify the shared role directly.
 Consider moving Alice to a lower-privilege group.
 ```
 
----
-
-# FR-20: Dashboard
+## FR-20: Dashboard
 
 The main CIEM dashboard should show:
 
@@ -988,11 +947,9 @@ Example:
 1,247 Least-Privilege Recommendations
 ```
 
----
+## 8. Primary Product Screens
 
-# 8. Primary Product Screens
-
-## 8.1 CIEM Overview
+### 8.1 CIEM Overview
 
 Widgets:
 
@@ -1006,9 +963,7 @@ Widgets:
 * Top risky identities
 * Top risky permissions
 
----
-
-## 8.2 Identities
+### 8.2 Identities
 
 Example table:
 
@@ -1028,9 +983,7 @@ Filters:
 * Activity
 * Recommendation status
 
----
-
-## 8.3 Identity Detail
+### 8.3 Identity Detail
 
 Header:
 
@@ -1063,9 +1016,7 @@ Activity
 Recommendations
 ```
 
----
-
-## 8.4 Permission Recommendation
+### 8.4 Permission Recommendation
 
 Example:
 
@@ -1099,13 +1050,11 @@ Dismiss
 Create Remediation Ticket
 ```
 
----
-
-# 9. Data Model
+## 9. Data Model
 
 A normalized cross-cloud model should be used.
 
-## Identity
+### Identity
 
 ```text
 identity_id
@@ -1119,7 +1068,7 @@ created_at
 last_activity_at
 ```
 
-## Permission
+### Permission
 
 ```text
 permission_id
@@ -1131,7 +1080,7 @@ risk_level
 risk_category
 ```
 
-## Entitlement
+### Entitlement
 
 ```text
 identity_id
@@ -1143,7 +1092,7 @@ conditions
 effective_status
 ```
 
-## Permission Usage
+### Permission Usage
 
 ```text
 identity_id
@@ -1155,7 +1104,7 @@ resources_used
 analysis_window
 ```
 
-## Recommendation
+### Recommendation
 
 ```text
 recommendation_id
@@ -1169,9 +1118,7 @@ status
 created_at
 ```
 
----
-
-# 10. Architecture
+## 10. Architecture
 
 Suggested high-level architecture:
 
@@ -1251,9 +1198,7 @@ Cloud Logs ------------------------------+
                  +--------------------+
 ```
 
----
-
-# 11. Recommendation Engine
+## 11. Recommendation Engine
 
 The core algorithm can conceptually operate as follows.
 
@@ -1325,15 +1270,13 @@ Recommendation(
 )
 ```
 
----
-
-# 12. Important Safety Guardrails
+## 12. Important Safety Guardrails
 
 Purely usage-based permission removal can cause production outages.
 
 The recommendation engine must therefore include safety mechanisms.
 
-## 12.1 Minimum Observation Window
+### 12.1 Minimum Observation Window
 
 Administrators should be warned when the observation period is too short.
 
@@ -1347,9 +1290,7 @@ This identity may execute monthly or quarterly operations.
 Recommendation confidence: Low.
 ```
 
----
-
-## 12.2 Rare Operations
+### 12.2 Rare Operations
 
 Some permissions are legitimately used infrequently.
 
@@ -1372,9 +1313,7 @@ The product should allow permissions to be marked:
 Required but Rarely Used
 ```
 
----
-
-## 12.3 Incomplete Log Coverage
+### 12.3 Incomplete Log Coverage
 
 If logging is incomplete:
 
@@ -1391,15 +1330,11 @@ Reason:
 Required audit log source is not enabled.
 ```
 
----
-
-## 12.4 Break-Glass Accounts
+### 12.4 Break-Glass Accounts
 
 Emergency or break-glass identities should be flagged and excluded from standard recommendations where configured.
 
----
-
-## 12.5 Protected Permissions
+### 12.5 Protected Permissions
 
 Administrators should be able to create policies such as:
 
@@ -1411,9 +1346,7 @@ for identities tagged:
 Team = DisasterRecovery
 ```
 
----
-
-# 13. Recommendation Types
+## 13. Recommendation Types
 
 The system should support multiple least-privilege recommendation types.
 
@@ -1467,9 +1400,7 @@ Custom application operator policy
 Identity has not been active for 180 days.
 ```
 
----
-
-# 14. Recommendation Lifecycle
+## 14. Recommendation Lifecycle
 
 Recommendations should have a workflow state.
 
@@ -1495,9 +1426,7 @@ Remediation Date
 Ticket Reference
 ```
 
----
-
-# 15. Integrations
+## 15. Integrations
 
 Future integrations may include:
 
@@ -1527,37 +1456,35 @@ CIEM Verification
 Finding Closed
 ```
 
----
-
-# 16. Reporting
+## 16. Reporting
 
 Reports should include:
 
-## Least Privilege Coverage
+### Least Privilege Coverage
 
 ```text
 % of identities operating within recommended privilege levels
 ```
 
-## Permission Utilization
+### Permission Utilization
 
 ```text
 Used Permissions / Assigned Permissions
 ```
 
-## Excessive Permission Rate
+### Excessive Permission Rate
 
 ```text
 Unused Permissions / Effective Permissions
 ```
 
-## Privileged Permission Exposure
+### Privileged Permission Exposure
 
 ```text
 Unused high-risk permissions
 ```
 
-## Remediation Progress
+### Remediation Progress
 
 ```text
 Recommendations generated
@@ -1565,9 +1492,7 @@ Recommendations remediated
 Recommendations accepted as risk
 ```
 
----
-
-# 17. Success Metrics
+## 17. Success Metrics
 
 Primary product KPIs:
 
@@ -1609,13 +1534,11 @@ Average time from recommendation creation
 to permission remediation
 ```
 
----
-
-# 18. MVP Scope
+## 18. MVP Scope
 
 The MVP should focus on visibility and recommendations rather than automatic remediation.
 
-## MVP Capabilities
+### MVP Capabilities
 
 * Connect AWS, Azure, GCP, and OCI accounts.
 * Discover human identities.
@@ -1633,9 +1556,7 @@ The MVP should focus on visibility and recommendations rather than automatic rem
 * Provide evidence supporting recommendations.
 * Export recommendations.
 
----
-
-# 19. Phase 2
+## 19. Phase 2
 
 Potential Phase 2 capabilities:
 
@@ -1650,9 +1571,7 @@ Potential Phase 2 capabilities:
 * ServiceNow integration
 * Risk exception management
 
----
-
-# 20. Phase 3
+## 20. Phase 3
 
 Potential advanced CIEM capabilities:
 
@@ -1682,11 +1601,9 @@ Create standardized role:
 and migrate 19 identities to the role.
 ```
 
----
+## 21. Key Technical Challenges
 
-# 21. Key Technical Challenges
-
-## Permission Normalization
+### Permission Normalization
 
 Every cloud provider uses a different authorization model.
 
@@ -1704,25 +1621,19 @@ Source
 
 without hiding cloud-specific behavior.
 
----
-
-## Event-to-Permission Mapping
+### Event-to-Permission Mapping
 
 Not every audit event maps cleanly to exactly one permission.
 
 The platform will require a continuously maintained permission mapping catalog.
 
----
-
-## IAM Evaluation Complexity
+### IAM Evaluation Complexity
 
 Determining what a user **can actually do** is more difficult than simply listing attached roles.
 
 The effective permission engine is therefore one of the critical components of the system.
 
----
-
-## Missing Telemetry
+### Missing Telemetry
 
 Certain permission usage may not appear unless specific cloud logging options are enabled.
 
@@ -1740,9 +1651,7 @@ Unable to determine usage
 
 to prevent unsafe recommendations.
 
----
-
-# 22. Example End-to-End Scenario
+## 22. Example End-to-End Scenario
 
 Consider:
 
@@ -1832,9 +1741,7 @@ Reduction:
 
 The user can inspect each removed permission, its original entitlement source, last-observed usage, log coverage, associated resource scope, risk, and recommendation confidence before taking action.
 
----
-
-# 23. Core Product Principle
+## 23. Core Product Principle
 
 The product should **not** simply answer:
 
@@ -1842,6 +1749,7 @@ The product should **not** simply answer:
 
 It should answer the more security-relevant question:
 
+{: .important }
 > **"Based on this identity's current entitlements, observed behavior, resource scope, telemetry coverage, permission risk, and organizational policy, what is the safest least-privilege access model we can recommend?"**
 
 That distinction should guide the CIEM Permission Optimization architecture and product experience.

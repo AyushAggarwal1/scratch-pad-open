@@ -1,10 +1,27 @@
-# PRD: CIEM Permission Recommendation MVP
+---
+title: Permission Recommendation MVP
+parent: CIEM
+grand_parent: Notes
+nav_order: 2
+description: "PRD for the MVP slice: for a selected cloud user, list assigned permissions, analyze X days of audit logs, and recommend keep or remove."
+---
 
-| Field | Value |
-|---|---|
-| Status | Draft v0.1 |
-| Author | Ayush (TPM) |
-| Module | CIEM (CNAPP platform) |
+# CIEM Permission Recommendation — MVP
+
+Draft v0.1
+{: .label .label-yellow }
+Phase 2
+{: .label .label-blue }
+CIEM · CNAPP
+{: .label .label-purple }
+
+The deliberately small first slice of [Permission Optimization](ciem-permission-p1.md): one selected user, X days of audit logs, and keep-or-remove recommendations.
+
+## On this page
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
 
 ## 1. Product Overview
 
@@ -28,9 +45,7 @@ For a selected cloud user:
 5. Compare assigned permissions with used permissions.
 6. Recommend removing permissions that were not used.
 
----
-
-# 2. Problem Statement
+## 2. Problem Statement
 
 Cloud users are often assigned more permissions than they actually require.
 
@@ -48,9 +63,7 @@ Over time, users may retain permissions they no longer use.
 
 The product should identify these unused permissions and recommend a smaller permission set based on actual activity.
 
----
-
-# 3. Core Product Flow
+## 3. Core Product Flow
 
 ```text
 User
@@ -84,9 +97,7 @@ Compare
        REMOVE
 ```
 
----
-
-# 4. Core Logic
+## 4. Core Logic
 
 ```text
 Assigned Permissions
@@ -120,9 +131,7 @@ Permissions Recommended for Removal
 Assigned Permissions - Used Permissions
 ```
 
----
-
-# 5. Supported Cloud Providers
+## 5. Supported Cloud Providers
 
 Initial product should support:
 
@@ -139,11 +148,9 @@ Each cloud provider will have:
 
 The recommendation logic remains common across all providers.
 
----
+## 6. Functional Requirements
 
-# 6. Functional Requirements
-
-## FR-1: Select User
+### FR-1: Select User
 
 User should be able to select a cloud identity.
 
@@ -155,9 +162,7 @@ Account: Production
 User: alice
 ```
 
----
-
-## FR-2: Discover Assigned Permissions
+### FR-2: Discover Assigned Permissions
 
 The system should identify all permissions available to the selected user.
 
@@ -186,9 +191,7 @@ ec2:StartInstances
 ec2:StopInstances
 ```
 
----
-
-## FR-3: Show Permission Source
+### FR-3: Show Permission Source
 
 For every permission, show how the user received it.
 
@@ -202,9 +205,7 @@ Example:
 | ec2:StartInstances | Policy       | EC2Developer  |
 | ec2:StopInstances  | Policy       | EC2Developer  |
 
----
-
-# 7. Log Analysis
+## 7. Log Analysis
 
 The system should analyze cloud activity logs.
 
@@ -232,9 +233,7 @@ Azure Activity Logs / relevant audit logs
 OCI Audit Logs
 ```
 
----
-
-# 8. Analysis Period
+## 8. Analysis Period
 
 User should be able to select:
 
@@ -253,9 +252,7 @@ Default:
 90 Days
 ```
 
----
-
-# 9. Identify Used Permissions
+## 9. Identify Used Permissions
 
 The system should read audit events belonging to the selected user.
 
@@ -300,13 +297,11 @@ s3:PutObject
 ec2:StartInstances
 ```
 
----
-
-# 10. Compare Permissions
+## 10. Compare Permissions
 
 Example:
 
-## Assigned Permissions
+### Assigned Permissions
 
 ```text
 s3:GetObject
@@ -317,7 +312,7 @@ ec2:StartInstances
 ec2:StopInstances
 ```
 
-## Used During Last 90 Days
+### Used During Last 90 Days
 
 ```text
 s3:GetObject
@@ -325,7 +320,7 @@ s3:PutObject
 ec2:StartInstances
 ```
 
-## Unused Permissions
+### Unused Permissions
 
 ```text
 s3:DeleteObject
@@ -333,13 +328,11 @@ s3:CreateBucket
 ec2:StopInstances
 ```
 
----
-
-# 11. Recommendation
+## 11. Recommendation
 
 The system should produce:
 
-## Keep
+### Keep
 
 ```text
 s3:GetObject
@@ -347,7 +340,7 @@ s3:PutObject
 ec2:StartInstances
 ```
 
-## Recommend Removal
+### Recommend Removal
 
 ```text
 s3:DeleteObject
@@ -355,22 +348,20 @@ s3:CreateBucket
 ec2:StopInstances
 ```
 
----
+## 12. Main User Interface
 
-# 12. Main User Interface
-
-## User Permission Page
+### User Permission Page
 
 Example:
 
-### User
+#### User
 
 ```text
 Alice
 AWS / Production
 ```
 
-### Analysis
+#### Analysis
 
 ```text
 Analysis Period: Last 90 Days
@@ -380,7 +371,7 @@ Used Permissions: 3
 Unused Permissions: 3
 ```
 
-### Permission Table
+#### Permission Table
 
 | Permission         | Assigned Via | Source        | Used | Last Used | Recommendation |
 | ------------------ | ------------ | ------------- | ---- | --------- | -------------- |
@@ -391,9 +382,7 @@ Unused Permissions: 3
 | ec2:StartInstances | Policy       | EC2Developer  | Yes  | Aug 14    | Keep           |
 | ec2:StopInstances  | Policy       | EC2Developer  | No   | —         | Remove         |
 
----
-
-# 13. System Architecture
+## 13. System Architecture
 
 ```text
                        CIEM
@@ -445,13 +434,11 @@ Unused Permissions: 3
            KEEP                  REMOVE
 ```
 
----
-
-# 14. Backend Components
+## 14. Backend Components
 
 Only three main components are required for the MVP.
 
-## Component 1: Permission Collector
+### Component 1: Permission Collector
 
 Responsibility:
 
@@ -474,9 +461,7 @@ Output:
 }
 ```
 
----
-
-## Component 2: Log Analyzer
+### Component 2: Log Analyzer
 
 Responsibility:
 
@@ -501,9 +486,7 @@ Output:
 }
 ```
 
----
-
-## Component 3: Recommendation Engine
+### Component 3: Recommendation Engine
 
 Input:
 
@@ -523,11 +506,9 @@ IF permission does not exist in Used Permissions
     → REMOVE
 ```
 
----
+## 15. Database Model
 
-# 15. Database Model
-
-## Users
+### Users
 
 ```text
 users
@@ -538,9 +519,7 @@ account_id
 username
 ```
 
----
-
-## User Permission
+### User Permission
 
 ```text
 user_permissions
@@ -559,9 +538,7 @@ alice | s3:PutObject    | ROLE   | DeveloperRole
 alice | s3:DeleteObject | GROUP  | AdminGroup
 ```
 
----
-
-## Permission Usage
+### Permission Usage
 
 ```text
 permission_usage
@@ -580,9 +557,7 @@ alice | s3:GetObject   | 2026-05-12 | 2026-08-17 | 125
 alice | s3:PutObject   | 2026-06-05 | 2026-08-16 | 42
 ```
 
----
-
-# 16. Recommendation Algorithm
+## 16. Recommendation Algorithm
 
 Pseudo-code:
 
@@ -616,11 +591,9 @@ REMOVE =
 Assigned - Used
 ```
 
----
+## 17. API Design
 
-# 17. API Design
-
-## Get User Permissions
+### Get User Permissions
 
 ```text
 GET /users/{userId}/permissions
@@ -638,9 +611,7 @@ Response:
 ]
 ```
 
----
-
-## Analyze Permission Usage
+### Analyze Permission Usage
 
 ```text
 POST /users/{userId}/analyze
@@ -664,9 +635,7 @@ Response:
 }
 ```
 
----
-
-## Get Recommendations
+### Get Recommendations
 
 ```text
 GET /users/{userId}/recommendations
@@ -689,9 +658,7 @@ Response:
 ]
 ```
 
----
-
-# 18. Example End-to-End Flow
+## 18. Example End-to-End Flow
 
 User selects:
 
@@ -771,9 +738,7 @@ s3:DeleteObject
 s3:CreateBucket
 ```
 
----
-
-# 19. MVP Scope
+## 19. MVP Scope
 
 The MVP needs to answer only three questions:
 
@@ -810,8 +775,7 @@ No automatic permission changes are required in the MVP.
 
 The system only provides a recommendation.
 
----
+## 20. Final MVP Definition
 
-# 20. Final MVP Definition
-
+{: .important }
 > **For a selected cloud user, identify all permissions assigned through groups, roles, policies or direct assignments; analyze cloud audit logs for the last X days to identify permissions actually used; compare assigned permissions with used permissions; and recommend keeping used permissions and removing unused permissions.**
