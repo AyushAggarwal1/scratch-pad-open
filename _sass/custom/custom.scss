@@ -3,7 +3,7 @@
 //
 // Everything here is driven by scheme variables, so it compiles into
 // both the light ("scratchpad") and dark ("scratchpad-dark") builds:
-// warm paper surfaces, raspberry interactive elements, and a small
+// warm paper surfaces, graphite-ink interactive elements, and a small
 // amber highlighter accent.
 // ------------------------------------------------------------------
 
@@ -12,7 +12,7 @@
 $osn-accent: #e0a63f !default;
 $osn-accent-deep: #c68d2c !default;
 $osn-accent-soft: rgba(224, 166, 63, 0.34) !default;
-$osn-nav-active-color: #b02458 !default;
+$osn-nav-active-color: #1f242b !default;
 $osn-card-bg: #ffffff !default;
 $osn-card-soon-bg: #f7f7f2 !default;
 
@@ -31,22 +31,44 @@ $osn-card-soon-bg: #f7f7f2 !default;
     margin-right: 0.5rem;
     color: $osn-accent-deep;
     content: "▍";
-    animation: osn-blink 1.4s step-end infinite;
+    animation: osn-blink 1.6s ease-in-out infinite;
   }
 }
 
 @keyframes osn-blink {
   50% {
-    opacity: 0;
+    opacity: 0.3;
   }
 }
 
-// Current page: quiet wash + inked bar instead of the theme gradient
-.side-bar .nav-list .nav-list-item .nav-list-link.active {
-  color: $osn-nav-active-color;
-  background-color: rgba($osn-nav-active-color, 0.07);
-  background-image: none;
-  box-shadow: inset 2px 0 0 $osn-nav-active-color;
+// Navigation: slightly larger type, rounded row pills
+.side-bar .site-nav .nav-list .nav-list-item {
+  font-size: 0.8125rem !important;
+
+  .nav-list-link {
+    margin: 1px 0.5rem;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: $feedback-color;
+      background-image: none;
+    }
+
+    &.active {
+      color: $osn-nav-active-color;
+      background-color: rgba($osn-nav-active-color, 0.08);
+      background-image: none;
+    }
+  }
+
+  .nav-list-expander {
+    border-radius: 6px;
+
+    &:hover {
+      background-color: $feedback-color;
+      background-image: none;
+    }
+  }
 }
 
 // Sidebar footer (holds the scheme toggle)
@@ -54,6 +76,49 @@ $osn-card-soon-bg: #f7f7f2 !default;
   padding-top: 0.85rem;
   padding-bottom: 0.85rem;
   border-top: 1px solid $border-color;
+}
+
+// ------------------------------------------------------------------
+// Header search: a contained, rounded field
+// ------------------------------------------------------------------
+
+@include mq(md) {
+  .search-input-wrap {
+    top: 50%;
+    height: 2.45rem !important;
+    background-color: $search-background-color;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    transform: translateY(-50%);
+
+    &:focus-within {
+      border-color: rgba($link-color, 0.55);
+      box-shadow: 0 0 0 3px rgba($link-color, 0.08);
+    }
+  }
+
+  .search-input {
+    padding-left: 2.3rem;
+    background-color: transparent;
+  }
+
+  .search-label {
+    padding-left: 0.6rem;
+  }
+
+  .search-active .search-input-wrap {
+    border-radius: 8px;
+  }
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-results {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.12);
 }
 
 // ------------------------------------------------------------------
@@ -110,17 +175,28 @@ $osn-card-soon-bg: #f7f7f2 !default;
 
 .main-content {
   h1 {
+    font-size: 2.25rem !important;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   h2 {
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
-  h3,
-  h4,
+  h3 {
+    font-size: 1.0625rem !important;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 0.9375rem !important;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
   h5 {
     font-weight: 600;
   }
@@ -129,7 +205,71 @@ $osn-card-soon-bg: #f7f7f2 !default;
   h2:not(.text-delta) {
     margin-top: 2.75rem;
     padding-top: 1.4rem;
+    font-size: 1.375rem !important;
     border-top: 1px solid $border-color;
+  }
+
+  // Quieter link underlines that ink up on hover
+  a:not(.btn):not(.shelf-card) {
+    text-decoration-color: rgba($link-color, 0.35);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  // Flat, modern buttons
+  p > .btn {
+    padding: 0.5em 1.1em;
+    border-radius: 8px;
+    box-shadow: none;
+
+    &:active {
+      box-shadow: none;
+    }
+
+    &:focus,
+    &:focus:hover {
+      box-shadow: 0 0 0 3px rgba($link-color, 0.2);
+    }
+  }
+
+  p > .btn:not([class*="btn-"]) {
+    color: $body-heading-color;
+    background-color: $body-background-color;
+    border: 1px solid $border-color;
+
+    &:hover {
+      color: $link-color;
+      background-color: $body-background-color;
+      border-color: rgba($link-color, 0.5);
+    }
+  }
+
+  p > .btn-primary {
+    background-color: $btn-primary-color;
+    background-image: none;
+
+    &:hover {
+      background-color: darken($btn-primary-color, 5%);
+      background-image: none;
+    }
+  }
+
+  // Example quotes (callouts carry their own classes)
+  blockquote:not([class]) {
+    padding: 0.15rem 0 0.15rem 1rem;
+    margin-left: 0;
+    border-left: 3px solid $border-color;
+  }
+
+  // Table headers as quiet small caps
+  th {
+    font-size: 0.71875rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   hr {
@@ -144,10 +284,19 @@ $osn-card-soon-bg: #f7f7f2 !default;
   background: $osn-accent-soft;
 }
 
-// Meta chips under document titles (`{: .label }` paragraphs)
+// Meta chips under document titles (`{: .label }` paragraphs) —
+// unified neutral pills, matching the card chips
 .main-content p.label {
+  padding: 0.2em 0.65em;
   margin-right: 0.25rem;
   margin-left: 0;
+  font-family: $mono-font-family;
+  font-size: 0.65625rem !important;
+  letter-spacing: 0.05em;
+  color: $body-text-color;
+  background-color: $base-button-color;
+  border: 1px solid $border-color;
+  border-radius: 999px;
 }
 
 // ------------------------------------------------------------------
@@ -161,7 +310,7 @@ $osn-card-soon-bg: #f7f7f2 !default;
   list-style: none;
   background-color: $code-background-color;
   border: 1px solid $border-color;
-  border-radius: $border-radius;
+  border-radius: 8px;
 
   @include mq(sm) {
     columns: 2;
@@ -218,7 +367,7 @@ $osn-card-soon-bg: #f7f7f2 !default;
 .main-content h1.home-hero {
   max-width: 34rem;
   margin-top: 0.25rem;
-  font-size: 2.125rem !important;
+  font-size: 2.25rem !important;
   line-height: 1.15;
 
   @include mq(sm) {
@@ -251,14 +400,45 @@ $osn-card-soon-bg: #f7f7f2 !default;
   margin: 1.5rem 0 0.5rem;
 }
 
+// Shared: icon tile + small mono chip (cards, index heads)
+.main-content .shelf-icon {
+  display: inline-flex;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: $link-color;
+  background-color: rgba($link-color, 0.08);
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.main-content .shelf-chip {
+  margin-left: auto;
+  padding: 0.1rem 0.55rem;
+  font-family: $mono-font-family;
+  font-size: 0.65625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $body-text-color;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  opacity: 0.8;
+}
+
 .main-content .shelf-card {
   display: block;
-  padding: 1.1rem 1.2rem;
+  padding: 1.25rem 1.35rem;
   color: $body-text-color;
   text-decoration: none;
   background-color: $osn-card-bg;
   border: 1px solid $border-color;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: border-color 150ms ease, transform 150ms ease,
     box-shadow 150ms ease;
 
@@ -268,41 +448,11 @@ $osn-card-soon-bg: #f7f7f2 !default;
     align-items: center;
   }
 
-  .shelf-icon {
-    display: inline-flex;
-    flex: none;
-    width: 1.75rem;
-    height: 1.75rem;
-    color: $link-color;
-    background-color: rgba($link-color, 0.08);
-    border-radius: 7px;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-      width: 1rem;
-      height: 1rem;
-    }
-  }
-
   .shelf-path {
     font-family: $mono-font-family;
     font-size: 0.8125rem;
     font-weight: 600;
     color: $link-color;
-  }
-
-  .shelf-chip {
-    margin-left: auto;
-    padding: 0.1rem 0.55rem;
-    font-family: $mono-font-family;
-    font-size: 0.65625rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: $body-text-color;
-    border: 1px solid $border-color;
-    border-radius: 999px;
-    opacity: 0.8;
   }
 
   strong {
@@ -320,9 +470,9 @@ $osn-card-soon-bg: #f7f7f2 !default;
 
 a.shelf-card:hover {
   background-image: none;
-  border-color: $link-color;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
-  transform: translateY(-2px);
+  border-color: rgba($link-color, 0.45);
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.07);
+  transform: translateY(-1px);
 }
 
 .main-content .shelf-card.is-soon {
@@ -427,6 +577,131 @@ footer .footer-social-link {
 }
 
 // ------------------------------------------------------------------
+// Notes index: topic panels with document rows
+// ------------------------------------------------------------------
+
+.main-content .index-topic {
+  margin: 1.5rem 0 1rem;
+  overflow: hidden;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+}
+
+.main-content .index-topic-head {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 1.05rem 1.25rem 0.35rem;
+}
+
+.main-content .index-topic-title {
+  font-weight: 600;
+  color: $body-heading-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.main-content .index-topic-desc {
+  padding: 0 1.25rem 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.main-content .index-docs {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  > li {
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid $border-color;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  a {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.7rem 1.25rem;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: $feedback-color;
+    }
+  }
+}
+
+.main-content .index-doc-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: $body-heading-color;
+}
+
+.main-content .index-doc-meta {
+  flex: none;
+  font-family: $mono-font-family;
+  font-size: 0.71875rem;
+  color: $body-text-color;
+  opacity: 0.7;
+}
+
+// ------------------------------------------------------------------
+// Prev / next pager between documents
+// ------------------------------------------------------------------
+
+.main-content .doc-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.main-content .doc-pager-link {
+  display: block;
+  padding: 0.85rem 1.1rem;
+  text-decoration: none;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  transition: background-color 150ms ease, border-color 150ms ease;
+
+  &:hover {
+    background-color: $feedback-color;
+    border-color: rgba($link-color, 0.45);
+  }
+
+  &.is-next {
+    text-align: right;
+  }
+}
+
+.main-content .doc-pager-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: $mono-font-family;
+  font-size: 0.65625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $body-text-color;
+  opacity: 0.65;
+}
+
+.main-content .doc-pager-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $body-heading-color;
+}
+
+// ------------------------------------------------------------------
 // Motion preferences
 // ------------------------------------------------------------------
 
@@ -436,6 +711,8 @@ footer .footer-social-link {
   }
 
   .main-content .shelf-card,
+  .main-content .index-docs a,
+  .main-content .doc-pager-link,
   .scheme-toggle,
   footer .footer-social-link {
     transition: none;

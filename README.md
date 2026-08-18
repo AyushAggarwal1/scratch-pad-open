@@ -10,12 +10,13 @@ organized by topic.
 
 ```text
 index.md                  → home page
+404.html                  → not-found page
 notes/
   index.md                → the "Notes" section page (topic cards)
   ciem/
     index.md              → topic page (CIEM)
-    ciem-permission-p1.md → a note
-    ciem-permission-p2.md → a note
+    01-ciem-permission.md → a note
+    02-ciem-permission.md → a note
 _config.yml               → site config (theme pin, search, callouts…)
 _sass/                    → color schemes + custom styling
 _includes/                → fonts, favicon, scheme toggle
@@ -62,10 +63,10 @@ has_children: true
 ```
 
 Pages inside the folder then use `parent: Kubernetes` and
-`grand_parent: Notes`. Optionally add a card for the topic on
-`notes/index.md` (copy an existing `shelf-card` block and change the
-icon/text) — cards are hand-curated; navigation and search work without
-them.
+`grand_parent: Notes`. Then add the topic to the index on
+`notes/index.md` (copy an existing `index-topic` block and its document
+rows) — the index is hand-curated; navigation and search work without
+it.
 
 ### Optional flourishes
 
@@ -116,7 +117,7 @@ Leave the pin unless deliberately upgrading (custom styling is written
 against this version).
 
 The look — pure-white light mode, dark mode behind the sidebar toggle,
-raspberry (`#b02458`) + amber (`#e0a63f`) accents, IBM Plex type:
+graphite-ink interactive elements + a single amber (`#e0a63f`) accent, IBM Plex type:
 
 - `_sass/color_schemes/scratchpad.scss` — light scheme (default); all
   colors live in scheme variables

@@ -15,7 +15,7 @@ Phase 2
 CIEM · CNAPP
 {: .label .label-purple }
 
-The deliberately small first slice of [Permission Optimization](ciem-permission-p1.md): one selected user, X days of audit logs, and keep-or-remove recommendations.
+The deliberately small first slice of [Permission Optimization](01-ciem-permission.md): one selected user, X days of audit logs, and keep-or-remove recommendations.
 
 ## On this page
 {: .no_toc .text-delta }
@@ -779,3 +779,11 @@ The system only provides a recommendation.
 
 {: .important }
 > **For a selected cloud user, identify all permissions assigned through groups, roles, policies or direct assignments; analyze cloud audit logs for the last X days to identify permissions actually used; compare assigned permissions with used permissions; and recommend keeping used permissions and removing unused permissions.**
+
+<nav class="doc-pager" aria-label="Document navigation">
+  <a class="doc-pager-link is-prev" href="../01-ciem-permission/">
+    <span class="doc-pager-label">Previous</span>
+    <span class="doc-pager-title">Permission Recommendation</span>
+  </a>
+  <span></span>
+</nav>

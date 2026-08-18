@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------
 // "scratchpad" — the site's default light scheme.
-// Pure white surfaces with cool hairline borders, raspberry accents for
+// Pure white surfaces with cool hairline borders, graphite ink for
 // interactive elements, and a small amber highlighter accent.
 // Layout polish lives in _sass/custom/custom.scss.
 // ------------------------------------------------------------------
@@ -33,12 +33,12 @@ $body-text-color: #3d4550;
 $border-color: #e6e8ea;
 
 // Ink (interactive)
-$link-color: #b02458;
-$btn-primary-color: #b02458;
+$link-color: #24292f;
+$btn-primary-color: #1f242b;
 $base-button-color: #f6f7f8;
 
-// Sidebar — white as well, separated by a hairline border
-$sidebar-color: #ffffff;
+// Sidebar — barely off-white, separated by a hairline border
+$sidebar-color: #fafafa;
 $feedback-color: #f3f5f6; // hover wash
 $nav-child-link-color: #57606b;
 
@@ -49,7 +49,7 @@ $search-background-color: #ffffff;
 $search-result-preview-color: #4b535e;
 
 // Custom tokens used by _sass/custom/custom.scss
-$osn-nav-active-color: #b02458;
+$osn-nav-active-color: #1f242b;
 $osn-accent: #e0a63f; // amber highlighter
 $osn-accent-deep: #c68d2c; // amber with enough contrast on white
 $osn-accent-soft: rgba(224, 166, 63, 0.32); // hero highlight sweep

@@ -282,37 +282,37 @@ As a Security Engineer, I want to see the activity events supporting each used p
 
 ## 7. Functional Requirements
 
-## FR-1: Cloud Account Onboarding
+### FR-1: Cloud Account Onboarding
 
 The system must allow administrators to connect cloud environments.
 
 Supported initial integrations:
 
-### AWS
+#### AWS
 
 * AWS Organizations
 * Individual AWS Accounts
 
-### GCP
+#### GCP
 
 * Organizations
 * Folders
 * Projects
 
-### Azure
+#### Azure
 
 * Azure Tenant
 * Management Groups
 * Subscriptions
 
-### OCI
+#### OCI
 
 * OCI Tenancy
 * Compartments
 
 The integration should operate using read-only permissions wherever possible.
 
-## FR-2: Identity Discovery
+### FR-2: Identity Discovery
 
 The system must discover identities from each cloud provider.
 
@@ -344,7 +344,7 @@ Federated Identity
 Machine Identity
 ```
 
-## FR-3: Permission Discovery
+### FR-3: Permission Discovery
 
 The system must determine permissions assigned to each identity.
 
@@ -360,13 +360,13 @@ Example:
 
 The system must support permissions inherited through groups and roles.
 
-## FR-4: Effective Permission Calculation
+### FR-4: Effective Permission Calculation
 
 The system must calculate the effective permission set for each identity.
 
 The calculation should consider provider-specific IAM behavior.
 
-### AWS
+#### AWS
 
 Potential inputs include:
 
@@ -381,7 +381,7 @@ Potential inputs include:
 * Session policies
 * Explicit deny rules
 
-### Azure
+#### Azure
 
 Potential inputs include:
 
@@ -395,7 +395,7 @@ Potential inputs include:
 * Deny assignments
 * Conditional access where relevant
 
-### GCP
+#### GCP
 
 Potential inputs include:
 
@@ -410,7 +410,7 @@ Potential inputs include:
 * IAM Conditions
 * Organization Policies where relevant
 
-### OCI
+#### OCI
 
 Potential inputs include:
 
@@ -422,11 +422,11 @@ Potential inputs include:
 * Identity domains
 * Policy inheritance
 
-## FR-5: Activity Log Collection
+### FR-5: Activity Log Collection
 
 The system must collect activity data from native cloud audit systems.
 
-### AWS
+#### AWS
 
 Primary sources:
 
@@ -435,7 +435,7 @@ AWS CloudTrail
 CloudTrail Lake where configured
 ```
 
-### GCP
+#### GCP
 
 Primary sources:
 
@@ -446,7 +446,7 @@ Data Access Logs
 System Event Logs
 ```
 
-### Azure
+#### Azure
 
 Primary sources:
 
@@ -456,7 +456,7 @@ Microsoft Entra audit/sign-in telemetry where required
 Resource-specific diagnostic logs where applicable
 ```
 
-### OCI
+#### OCI
 
 Primary sources:
 
@@ -466,7 +466,7 @@ OCI Audit
 
 The ingestion pipeline should normalize events into a common CIEM activity schema.
 
-## FR-6: Configurable Analysis Window (Tenant Specific)
+### FR-6: Configurable Analysis Window (Tenant Specific)
 
 Administrators must be able to select the historical usage period.
 
@@ -494,7 +494,7 @@ Example:
 
 > Permission `s3:DeleteBucket` has not been observed between May 20 and August 18.
 
-## FR-7: Activity-to-Permission Mapping
+### FR-7: Activity-to-Permission Mapping
 
 The system must map cloud audit events to IAM permissions.
 
@@ -525,7 +525,7 @@ Normalized internal representation:
 
 Provider-specific mapping libraries should be maintained by the platform.
 
-## FR-8: Permission Usage Analysis
+### FR-8: Permission Usage Analysis
 
 For each identity, classify permissions into:
 
@@ -535,15 +535,15 @@ Unused
 Unknown
 ```
 
-### Used
+#### Used
 
 Evidence exists that the identity exercised the permission.
 
-### Unused
+#### Unused
 
 The permission exists but no activity was observed during the selected period.
 
-### Unknown
+#### Unknown
 
 The system cannot reliably determine usage.
 
@@ -558,7 +558,7 @@ Potential reasons:
 
 Unknown permissions must never automatically be treated as unused.
 
-## FR-9: Effective Permission Recommendation
+### FR-9: Effective Permission Recommendation
 
 The system must produce a recommended permission set.
 
@@ -584,7 +584,7 @@ Recommended Permissions
 
 Example:
 
-### Assigned
+#### Assigned
 
 ```text
 s3:GetObject
@@ -594,14 +594,14 @@ s3:DeleteBucket
 s3:CreateBucket
 ```
 
-### Used during last 90 days
+#### Used during last 90 days
 
 ```text
 s3:GetObject
 s3:PutObject
 ```
 
-### Recommended
+#### Recommended
 
 ```text
 KEEP:
@@ -614,7 +614,7 @@ s3:DeleteBucket
 s3:CreateBucket
 ```
 
-## FR-10: Permission Recommendation Confidence
+### FR-10: Permission Recommendation Confidence
 
 Each recommendation should contain a confidence level.
 
@@ -648,7 +648,7 @@ Confidence:
 High
 ```
 
-## FR-11: Permission Risk Classification
+### FR-11: Permission Risk Classification
 
 Permissions should be classified by security impact.
 
@@ -682,7 +682,7 @@ ec2:TerminateInstances
 
 Risk information should help administrators prioritize unused permissions.
 
-## FR-12: Identity Risk Score
+### FR-12: Identity Risk Score
 
 Each identity should receive an entitlement risk score.
 
@@ -713,7 +713,7 @@ Critical Findings:
 1 unused credential-management permission
 ```
 
-## FR-13: Permission Detail View
+### FR-13: Permission Detail View
 
 Administrators must be able to inspect a permission.
 
@@ -754,7 +754,7 @@ Confidence
 High
 ```
 
-## FR-14: Usage Evidence
+### FR-14: Usage Evidence
 
 For permissions classified as used, the system should provide supporting activity.
 
@@ -780,7 +780,7 @@ prod-reporting
 
 Users should be able to drill into associated audit events.
 
-## FR-15: Recommendation Explanation
+### FR-15: Recommendation Explanation
 
 Every recommendation must explain why it exists.
 
@@ -806,7 +806,7 @@ Permission risk classification: High.
 Recommendation confidence: High.
 ```
 
-## FR-16: Recommended Role / Policy Generation
+### FR-16: Recommended Role / Policy Generation
 
 Where technically feasible, the product should create a suggested least-privilege policy.
 
@@ -839,7 +839,7 @@ Equivalent recommendation artifacts may include:
 
 Generated policies should be recommendations only in the initial release.
 
-## FR-17: Resource Scope Analysis
+### FR-17: Resource Scope Analysis
 
 Permissions should be analyzed together with their resource scope.
 
@@ -873,7 +873,7 @@ AND
 Resource scope reduction
 ```
 
-## FR-18: Wildcard Permission Expansion
+### FR-18: Wildcard Permission Expansion
 
 The engine must analyze wildcard permissions.
 
@@ -893,7 +893,7 @@ ec2:Describe*
 
 must be interpreted as the corresponding matching EC2 permissions.
 
-## FR-19: Group-Level Recommendations
+### FR-19: Group-Level Recommendations
 
 If excessive permissions are inherited through a group, the system should indicate whether modifying the group would impact other identities.
 
@@ -918,7 +918,7 @@ Do not modify the shared role directly.
 Consider moving Alice to a lower-privilege group.
 ```
 
-## FR-20: Dashboard
+### FR-20: Dashboard
 
 The main CIEM dashboard should show:
 
@@ -1753,3 +1753,11 @@ It should answer the more security-relevant question:
 > **"Based on this identity's current entitlements, observed behavior, resource scope, telemetry coverage, permission risk, and organizational policy, what is the safest least-privilege access model we can recommend?"**
 
 That distinction should guide the CIEM Permission Optimization architecture and product experience.
+
+<nav class="doc-pager" aria-label="Document navigation">
+  <span></span>
+  <a class="doc-pager-link is-next" href="../02-ciem-permission/">
+    <span class="doc-pager-label">Next</span>
+    <span class="doc-pager-title">Permission Recommendation MVP</span>
+  </a>
+</nav>

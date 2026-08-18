@@ -2,7 +2,7 @@
 // "scratchpad-dark" — night counterpart of the scratchpad scheme,
 // reached via the toggle in the sidebar footer. Starts from the
 // theme's dark scheme (github-dark syntax colors), then applies the
-// notepad palette: night paper, raspberry links, amber accents.
+// notepad palette: night paper, soft ink links, amber accents.
 // ------------------------------------------------------------------
 
 @import "./color_schemes/dark";
@@ -32,8 +32,8 @@ $body-text-color: #c2c9d4;
 $border-color: #2a313c;
 
 // Ink (interactive)
-$link-color: #f085ad;
-$btn-primary-color: #b3305f;
+$link-color: #dde3ec;
+$btn-primary-color: #343b45;
 $base-button-color: #1c232e;
 
 // Sidebar — slightly lifted against the night body
