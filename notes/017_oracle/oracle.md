@@ -4,6 +4,7 @@ parent: Notes
 nav_order: 17
 description: "OCI IAM policy statements for onboarding a tenancy under the CSPM and CIEM policy sets."
 ---
+{% raw %}
 
 # Oracle Cloud Onboarding
 
@@ -30,3 +31,4 @@ Allow group 'Default'/'ciem-accuknox' to inspect dynamic-groups in tenancy
 
 Allow group 'Default'/'ciem-accuknox' to inspect policies in tenancy
 Allow group 'Default'/'ciem-accuknox' to inspect compartments in tenancy
+{% endraw %}

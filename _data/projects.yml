@@ -1,0 +1,27 @@
+- slug: ciem
+  number: "01"
+  topic: CIEM
+  type: Product requirements
+  title: Making least privilege actionable.
+  description: From assigned permissions to observed usage. A product vision and a focused MVP for permission recommendations across four clouds.
+  url: /notes/004_ciem/
+  tags: [Identity security, Product design]
+  icon: shield
+- slug: dspm
+  number: "02"
+  topic: DSPM
+  type: Architecture & research
+  title: Finding the data that matters.
+  description: Mapping the path from cloud onboarding to sensitive-data discovery, with scan-engine notes and a practical PII recognizer reference.
+  url: /notes/003_dspm/
+  tags: [Data security, System design]
+  icon: database
+- slug: aspm
+  number: "03"
+  topic: ASPM
+  type: Product planning
+  title: Security, built into the workflow.
+  description: A phased application-security plan connecting source control, scanners, and quality gates to the developer workflow.
+  url: /notes/002_aspm/
+  tags: [App security, Developer experience]
+  icon: branch

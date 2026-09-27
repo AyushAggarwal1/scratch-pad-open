@@ -5,6 +5,7 @@ grand_parent: Notes
 nav_order: 6
 description: "Registering a GitHub App, its permissions, and the JWT → installation token flow used to clone repos."
 ---
+{% raw %}
 
 # Github Apps 
 Refer (https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)
@@ -78,3 +79,5 @@ Refer (https://docs.github.com/en/apps/creating-github-apps/registering-a-github
   - git clone https://x-access-token:{{ACCESS-TOKEN}}@github.com/{{ORG}}/{{REPO}}.git
 
   - https://x-access-token:ghs_ABCXYZ@github.com/USERNAME/REPO1.git
+
+{% endraw %}

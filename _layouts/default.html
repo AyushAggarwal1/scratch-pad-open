@@ -1,0 +1,36 @@
+---
+layout: table_wrappers
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+{% include head.html %}
+<body class="{{ page.page_class | default: 'document-page' }}">
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  {% include icons/icons.html %}
+  {% include components/sidebar.html %}
+  <div class="main" id="top">
+    {% include components/header.html %}
+    <div class="main-content-wrap">
+      {% include components/breadcrumbs.html %}
+      <div id="main-content" class="main-content" tabindex="-1">
+        <main>
+          {% if page.parent and page.has_children != true %}
+          {% assign word_count = content | strip_html | number_of_words %}
+          {% assign reading_time = word_count | plus: 219 | divided_by: 220 %}
+          <div class="document-meta"><span>{{ page.parent }}</span><span>{{ reading_time | at_least: 1 }} min read</span><span>Working notes</span></div>
+          {% endif %}
+          {% if site.heading_anchors != false and page.heading_anchors != false %}
+            {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
+          {% else %}
+            {{ content }}
+          {% endif %}
+          {% if page.has_toc != false %}{% include components/children_nav.html %}{% endif %}
+        </main>
+        {% include components/footer.html %}
+      </div>
+    </div>
+    {% if site.search_enabled != false %}{% include components/search_footer.html %}{% endif %}
+  </div>
+  {% if site.mermaid %}{% include components/mermaid.html %}{% endif %}
+</body>
+</html>

@@ -5,6 +5,7 @@ grand_parent: Cmds
 nav_order: 3
 description: "Per-cloud setup and scan commands for Cloudsplaining IAM analysis across AWS, Azure, GCP, and OCI."
 ---
+{% raw %}
 
 # Cloudsplaining
 
@@ -176,3 +177,4 @@ fingerprint={{ocid}}
 tenancy={{ocid}}
 region=us-ashburn-1
 key_file=<path to your private keyfile> # TODO
+{% endraw %}

@@ -1,36 +1,22 @@
-<!-- IBM Plex Sans + Plex Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
-
-<!-- Emoji favicon -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ctext%20y=%22.9em%22%20font-size=%2290%22%3E%F0%9F%93%93%3C/text%3E%3C/svg%3E">
-
-<meta name="theme-color" content="#ffffff">
-
-<!-- Restore the chosen color scheme before first paint.
-     Falls back to the OS preference when nothing is stored. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,wght@1,500&display=swap">
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+<meta name="theme-color" content="#faf9f6">
+<script src="{{ '/assets/js/notebook.js' | relative_url }}" defer></script>
+<noscript><style>.site-nav { display: block; } #menu-button, .search, .js-scheme-toggle { display: none; }</style></noscript>
 <script>
+  // Restore the theme before paint, including the previous notebook preference.
   (function () {
-    try {
-      var pref = localStorage.getItem("osn-scheme");
-      if (!pref && window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        pref = "dark";
-      }
-      if (pref === "dark") {
-        var link = document.querySelector(
-          'link[rel="stylesheet"][href*="just-the-docs-default"]'
-        );
-        if (link) {
-          link.href = link.href.replace(
-            "just-the-docs-default.css",
-            "just-the-docs-scratchpad-dark.css"
-          );
-        }
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", "#1d222b");
-      }
-    } catch (e) { /* storage unavailable — keep the default scheme */ }
+    var pref;
+    try { pref = localStorage.getItem('osn-scheme'); } catch (e) {}
+    if (pref !== 'light' && pref !== 'dark') {
+      pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    if (pref === 'dark') {
+      var link = document.querySelector('link[href*="just-the-docs-default.css"]');
+      if (link) link.href = link.href.replace('just-the-docs-default.css', 'just-the-docs-scratchpad-dark.css');
+      document.querySelector('meta[name="theme-color"]').content = '#181a19';
+    }
   })();
 </script>

@@ -5,6 +5,7 @@ grand_parent: Notes
 nav_order: 1
 description: "APIs to fetch Jira Epics and Stories, and how ticket type maps to task vs. sub-task creation."
 ---
+{% raw %}
 
 # Jira
 
@@ -70,3 +71,5 @@ Things to Consider
    elif fields.issuetype.name ==Story create Sub-Task Under Story
 5. API is Paginated
 
+
+{% endraw %}

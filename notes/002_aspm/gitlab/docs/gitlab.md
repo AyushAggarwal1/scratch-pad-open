@@ -5,6 +5,7 @@ grand_parent: Notes
 nav_order: 7
 description: "OAuth setup for GitLab Cloud and personal access tokens for self-hosted GitLab, including token refresh."
 ---
+{% raw %}
 
 # Gitlab Apps (Cloud)
 1. Go to `https://gitlab.com/-/user_settings/applications`
@@ -90,3 +91,5 @@ Note - Refresh Token Also Changed, Need to update Refresh Toke Again in DB
 
 7. Clone Repo git clone https://oauth2:{{token}}@gitlab.com/username/repo.git
    - git clone https://oauth2:{{token}}@nannie-intercolumnar-starvedly.ngrok-free.dev/accuknox/accuknox-scan.git
+
+{% endraw %}

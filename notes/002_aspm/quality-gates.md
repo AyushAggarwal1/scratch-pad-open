@@ -6,7 +6,7 @@ nav_order: 4
 description: "How a CLI-embedded quality-gate policy blocks a CI pipeline until AccuKnox returns a pass/fail result."
 ---
 
-## Quality Gates Flow
+# Quality Gates Flow
 
 1. User Creates a Rule Engine with having set of conditions
   - A New, Not Mandatory/ Optional Action with Use as Quality Gates

@@ -6,7 +6,7 @@ nav_order: 2
 description: "Working notes and use cases for asset-scoped rules — the earlier, rougher pass that fed the backend requirements doc."
 ---
 
-## Rule Engine for Assets
+# Rule Engine for Assets
 When Rule Engine Triggers then RE extracts Findings ID and then perform Actions
 
 ### Current Limitations

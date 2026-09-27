@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="0" width="14" height="630" fill="#b64b2c"/>
+  <rect x="72" y="62" width="56" height="56" rx="13" fill="#b64b2c"/>
+  <text x="85" y="105" font-family="Georgia,serif" font-size="49" font-weight="bold" fill="#fffaf3">a</text>
+  <circle cx="115" cy="103" r="3" fill="#f5c6a8"/>
+  <text x="146" y="86" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#282a27">ayush's scratchpad</text>
+  <text x="147" y="111" font-family="monospace" font-size="12" letter-spacing="2" fill="#686c63">AN OPEN NOTEBOOK</text>
+  <text x="72" y="258" font-family="Arial,sans-serif" font-size="76" font-weight="bold" letter-spacing="-3" fill="#282a27">Cloud security.</text>
+  <text x="72" y="344" font-family="Georgia,serif" font-size="76" font-style="italic" letter-spacing="-2" fill="#b64b2c">From the inside out.</text>
+  <text x="76" y="411" font-family="Arial,sans-serif" font-size="24" fill="#535650">Product requirements. Architecture notes. Practical tools.</text>
+  <path d="M72 488h1056" stroke="#e4e3dd" stroke-width="2"/>
+  <text x="76" y="546" font-family="Arial,sans-serif" font-size="25" fill="#282a27">Ayush Aggarwal</text>
+  <text x="76" y="577" font-family="monospace" font-size="15" fill="#686c63">TPM · CLOUD SECURITY</text>
+  <text x="1124" y="550" text-anchor="end" font-family="monospace" font-size="17" fill="#a84125">CIEM / DSPM / ASPM</text>
+  <path d="m1053 167 48-48m-48 0h48v48" fill="none" stroke="#b64b2c" stroke-width="4"/>
+</svg>
