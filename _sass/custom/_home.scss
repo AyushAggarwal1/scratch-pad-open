@@ -1,0 +1,282 @@
+// Introduction and a small, code-native notebook illustration.
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(255px, 1fr);
+  align-items: center;
+  gap: 36px;
+  padding: 29px 0 44px;
+}
+
+.main-content .home-hero h1 {
+  margin: 0 0 25px;
+  font-size: clamp(2.65rem, 4.1vw, 4.15rem) !important;
+  line-height: 1.12;
+  letter-spacing: -.055em;
+}
+
+.home-hero h1 em {
+  color: $osn-accent;
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.main-content .hero-intro {
+  margin-bottom: 12px;
+  font-size: .99rem;
+  line-height: 1.65;
+}
+
+.hero-intro a {
+  color: $body-heading-color;
+  font-weight: 600;
+  text-decoration-color: $osn-accent;
+}
+
+.main-content .hero-description {
+  max-width: 440px;
+  margin: 0 0 25px;
+  color: $osn-muted;
+  font-size: .88rem;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.main-content .action-primary, .action-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 43px;
+  padding: 11px 18px;
+  border: 1px solid #a84125;
+  border-radius: 5px;
+  background: #a84125;
+  color: #fffaf5;
+  font: 500 0.77rem $body-font-family;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .16s, transform .16s;
+}
+
+.main-content .action-primary:hover {
+  background: #8f361e;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.action-primary .ui-icon, .action-text .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.main-content .action-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: $body-heading-color;
+  font-size: .77rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.main-content .action-text:hover {
+  color: $link-color;
+}
+
+.hero-signoff {
+  margin-top: 16px;
+  color: $osn-muted;
+  font-size: .71rem;
+}
+
+.hero-signoff > span {
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 310px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.notebook-sheet {
+  position: absolute;
+  inset: 0 10px 17px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+}
+
+.sheet-back {
+  transform: rotate(8deg);
+  background: $osn-accent-soft;
+}
+
+.sheet-middle {
+  transform: rotate(-6deg);
+  background: $feedback-color;
+}
+
+.sheet-front {
+  padding: 22px;
+  transform: rotate(2deg);
+  background-color: $osn-card-bg;
+  background-image: linear-gradient($border-color 1px, transparent 1px);
+  background-size: 100% 26px;
+  background-position: 0 9px;
+  box-shadow: 0 7px 22px rgba(37, 37, 30, 0.04);
+}
+
+.sheet-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 0.54rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.sheet-heading > span:last-child {
+  margin-left: auto;
+}
+
+.tiny-cross {
+  color: $osn-accent;
+  font-size: 18px;
+}
+
+.sheet-title {
+  margin: 18px 0 16px;
+  color: $body-heading-color;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+
+.sheet-title em {
+  color: $osn-accent;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 500;
+}
+
+.sketch-flow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sketch-flow > span {
+  display: flex;
+  width: 38px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background: $osn-card-bg;
+  color: $body-text-color;
+}
+
+.sketch-flow .sketch-focus {
+  border-color: $osn-accent;
+  color: $osn-accent;
+  background: $osn-accent-soft;
+}
+
+.sketch-flow i {
+  flex: 1;
+  border-top: 1px dashed $osn-muted;
+}
+
+.sheet-check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 9px;
+  font-size: .66rem;
+  color: $body-text-color;
+}
+
+.sheet-check > span {
+  width: 10px;
+  color: $osn-accent;
+  font-weight: 600;
+}
+
+.sheet-check .check-empty {
+  height: 9px;
+  border: 1px solid $osn-muted;
+  border-radius: 1px;
+}
+
+.sheet-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+  font: 0.5rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.sheet-bottom > span:last-child {
+  color: $osn-accent;
+  font-size: 14px;
+}
+
+.notebook-caption {
+  position: absolute;
+  bottom: -17px;
+  width: 100%;
+  text-align: center;
+  color: $osn-muted;
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: .9rem;
+  transform: rotate(-3deg);
+}
+
+.notebook-stats {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  padding: 21px 0;
+  margin-top: 12px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  font-size: .69rem;
+  color: $osn-muted;
+}
+
+.notebook-stats .stats-label {
+  font: 0.58rem $mono-font-family;
+  letter-spacing: .08em;
+}
+
+.notebook-stats strong {
+  margin-right: 4px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: $body-heading-color;
+}
+
+.notebook-stats a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  color: $body-text-color;
+  text-decoration: none;
+}
+
+.notebook-stats .ui-icon {
+  width: 16px;
+  height: 16px;
+}

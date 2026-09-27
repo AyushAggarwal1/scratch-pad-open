@@ -4,10 +4,24 @@
 # Docs: https://just-the-docs.com
 # ------------------------------------------------------------------
 
-title: Open Source Notepad
+title: Ayush Aggarwal · Open Notebook
 description: >-
-  The public half of my scratchpad — PRDs, commands, references,
-  and field notes from building cloud-security products.
+  Cloud-security product thinking, in public. Explore Ayush Aggarwal's
+  product requirements, architecture notes, and practical security tooling.
+author:
+  name: Ayush Aggarwal
+  url: https://www.linkedin.com/in/ayushaggarwalin/
+  email: ayushaggarwal1136@gmail.com
+social:
+  name: Ayush Aggarwal
+  links:
+    - https://github.com/AyushAggarwal1
+    - https://www.linkedin.com/in/ayushaggarwalin/
+profile:
+  role: TPM · Cloud security
+  github: https://github.com/AyushAggarwal1
+  linkedin: https://www.linkedin.com/in/ayushaggarwalin/
+  email: ayushaggarwal1136@gmail.com
 
 url: "https://ayushaggarwal1.github.io"
 baseurl: "/scratch-pad-open"
@@ -30,6 +44,11 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+      image:
+        path: /assets/images/social-card.png
+        width: 1200
+        height: 630
+        alt: "Ayush Aggarwal's open notebook — cloud-security product thinking, in public."
 
 exclude:
   - README.md
@@ -38,6 +57,7 @@ exclude:
   - vendor/
   - .jekyll-cache/
   - .sass-cache/
+  - scripts/
 
 # --- Color scheme --------------------------------------------------
 # "scratchpad" is the custom light scheme (_sass/color_schemes/).
@@ -60,10 +80,7 @@ enable_copy_code_button: true
 heading_anchors: true
 
 # --- Navigation -----------------------------------------------------
-aux_links:
-  "GitHub":
-    - "https://github.com/AyushAggarwal1/scratch-pad-open"
-aux_links_new_tab: true
+aux_links: {}
 
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -75,9 +92,7 @@ gh_edit_repository: "https://github.com/AyushAggarwal1/scratch-pad-open"
 gh_edit_branch: "main"
 gh_edit_view_mode: "tree"
 
-footer_content: >-
-  © 2026 Ayush Aggarwal. Notes are living documents — they change as I
-  learn, update, and reorganize them.
+footer_content: Built with curiosity. Kept in public.
 
 # --- Callouts -------------------------------------------------------
 # Usage:  {: .note }  {: .important }  {: .warning }  {: .new }

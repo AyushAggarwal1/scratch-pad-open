@@ -1,3 +1,11 @@
+---
+title: Finding Catalog References
+parent: DSPM
+grand_parent: Notes
+nav_order: 3
+description: "Research sources behind the DSPM finding catalog: recognizers, finding conventions, and enrichment references."
+---
+
 # References — DSPM Finding Catalog
 
 Sources behind `fixtures/findings.json`: vendor naming conventions, compliance

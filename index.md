@@ -1,53 +1,67 @@
 ---
-title: Home
+title: Overview
 nav_order: 1
-description: "The public half of my scratchpad — PRDs, commands, references, and field notes from building cloud-security products."
+description: "I'm Ayush, a TPM working on cloud-security products. Explore my product requirements, architecture notes, and practical security tools."
 permalink: /
+page_class: home-page
+heading_anchors: false
+has_toc: false
 ---
 
-<p class="home-eyebrow"><span class="home-eyebrow-tick">▍</span>~/scratch-pad-open · a public notebook</p>
+<section class="home-hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="status-dot"></span>PRODUCT THINKING. PRACTICAL BUILDING.</p>
+    <h1 id="hero-title">Cloud security.<br><em>From the inside out.</em></h1>
+    <p class="hero-intro">I'm <a href="{{ '/about/' | relative_url }}">Ayush</a>, a TPM working on cloud-security products.<br class="desktop-break"> This is where I share the thinking behind the work.</p>
+    <p class="hero-description">Product requirements, architecture decisions, and the commands I keep coming back to. Written while building. Open for you to explore.</p>
+    <div class="hero-actions"><a class="action-primary" href="#selected-work">Explore my work {% include ui/icon.html name="arrow" %}</a><a class="action-text" href="{{ '/notes/' | relative_url }}">Browse the notebook {% include ui/icon.html name="arrow" %}</a></div>
+    <div class="hero-signoff"><span aria-hidden="true">↳</span> A working notebook, not a finished story.</div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="notebook-sheet sheet-back"></div><div class="notebook-sheet sheet-middle"></div>
+    <div class="notebook-sheet sheet-front">
+      <div class="sheet-heading"><span class="tiny-cross">+</span> FIELD NOTES <span>001 — ∞</span></div>
+      <div class="sheet-title">Make the complex<br><em>make sense.</em></div>
+      <div class="sketch-flow"><span>{% include ui/icon.html name="cloud" %}</span><i></i><span class="sketch-focus">{% include ui/icon.html name="shield" %}</span><i></i><span>{% include ui/icon.html name="code" %}</span></div>
+      <div class="sheet-check"><span>✓</span> Understand the problem</div><div class="sheet-check"><span>✓</span> Connect the systems</div><div class="sheet-check"><span class="check-empty"></span> Keep asking better questions</div>
+      <div class="sheet-bottom"><span>ideas → decisions → systems</span><span>↗</span></div>
+    </div>
+    <span class="notebook-caption">a little structure for big questions</span>
+  </div>
+</section>
 
-# Notes worth keeping, <span class="hl-sweep">kept in public</span>.
-{: .home-hero }
+{% assign note_pages = site.html_pages | where_exp: "item", "item.path contains 'notes/'" | where_exp: "item", "item.has_children != true" %}
+{% assign tool_pages = site.html_pages | where: "parent", "Security Tools Cmds" %}
+<div class="notebook-stats" aria-label="Inside the notebook"><span class="stats-label">A LOOK INSIDE</span><span><strong>{{ note_pages.size }}</strong> notes &amp; references</span><span><strong>{{ site.data.projects.size }}</strong> core security domains</span><span><strong>{{ tool_pages.size }}</strong> security tool guides</span><a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer">All in the open {% include ui/icon.html name="external" %}</a></div>
 
-I'm Ayush — a TPM working on cloud-security products. This is the public half of my scratchpad: PRDs I'm drafting, commands I keep reaching for, references, and things I learn along the way. It's all just notes, organized by topic.
-{: .home-lede }
+<section class="home-section" id="selected-work" aria-labelledby="work-heading">
+  <div class="section-heading"><div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="work-heading">Deep dives from the workbench.</h2></div><a class="section-link" href="{{ '/notes/' | relative_url }}">All notes {% include ui/icon.html name="arrow" %}</a></div>
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+    <a class="project-card project-{{ project.slug }}" href="{{ project.url | relative_url }}">
+      <div class="project-art" aria-hidden="true">
+        <div class="art-topline"><span>{{ project.topic }} / WORKING DOCUMENTS</span><span>{{ project.number }}</span></div>
+        {% case project.slug %}
+        {% when 'ciem' %}<div class="identity-diagram"><div class="diagram-source">{% include ui/icon.html name="shield" %}</div><div class="diagram-branches"><span>Assigned <b>→</b></span><span>Observed <b>→</b></span><span class="diagram-result">Recommended <b>✓</b></span></div></div>
+        {% when 'dspm' %}<div class="data-diagram"><div class="data-column"><span>.csv</span><span>.json</span><span>.pdf</span></div><span class="diagram-connector">→</span><div class="data-scanner">{% include ui/icon.html name="database" %}<span>DISCOVER</span></div><span class="diagram-connector">→</span><div class="data-finding"><span class="status-dot"></span>PII</div></div>
+        {% when 'aspm' %}<div class="pipeline-diagram"><span>{% include ui/icon.html name="branch" %}<small>COMMIT</small></span><i></i><span>{% include ui/icon.html name="code" %}<small>SCAN</small></span><i></i><span class="pipeline-gate">{% include ui/icon.html name="shield" %}<small>GATE</small></span></div>
+        {% endcase %}
+        <div class="art-bottomline">{{ project.type }}<span>↗</span></div>
+      </div>
+      <div class="project-copy"><span class="project-topic">{{ project.topic }}</span><h3>{{ project.title }}</h3><p>{{ project.description }}</p><div class="project-tags">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div><span class="project-read">Explore the documents {% include ui/icon.html name="arrow" %}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
 
-[Browse the notes](notes/index.md){: .btn .btn-primary .mr-2 }
-[View on GitHub](https://github.com/AyushAggarwal1/scratch-pad-open){: .btn }
+<section class="home-section notebook-section" aria-labelledby="notebook-heading">
+  <div class="section-heading"><div><p class="eyebrow">02 / THE OPEN NOTEBOOK</p><h2 id="notebook-heading">A few useful places to start.</h2></div><span class="section-aside">Less searching. More building.</span></div>
+  <div class="resource-grid">
+    <a class="resource-row" href="{{ '/notes/007_rule-engine-assets/' | relative_url }}"><span class="resource-icon">{% include ui/icon.html name="workflow" %}</span><span><strong>From requirements to rules</strong><small>Asset triggers, conditions, and backend design</small></span>{% include ui/icon.html name="arrow" %}</a>
+    <a class="resource-row" href="{{ '/cmds/002_security-tools-cmds/' | relative_url }}"><span class="resource-icon">{% include ui/icon.html name="terminal" %}</span><span><strong>The security toolbox</strong><small>Scanner commands worth keeping close</small></span>{% include ui/icon.html name="arrow" %}</a>
+    <a class="resource-row" href="{{ '/notes/005_integrations/' | relative_url }}"><span class="resource-icon">{% include ui/icon.html name="link" %}</span><span><strong>Connecting the pieces</strong><small>Jira, Microsoft Teams, and Sumo Logic</small></span>{% include ui/icon.html name="arrow" %}</a>
+    <a class="resource-row" href="{{ '/cmds/001_compliance-custom-script/' | relative_url }}"><span class="resource-icon">{% include ui/icon.html name="code" %}</span><span><strong>Small scripts, useful shortcuts</strong><small>Extract, enrich, and convert compliance data</small></span>{% include ui/icon.html name="arrow" %}</a>
+  </div>
+</section>
 
-## In the notepad
-
-<div class="shelf">
-  <a class="shelf-card" href="notes/ciem/">
-    <span class="shelf-head">
-      <span class="shelf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-      <span class="shelf-path">notes/ciem/</span>
-      <span class="shelf-chip">2 docs</span>
-    </span>
-    <strong>Cloud Identity &amp; Entitlement Management</strong>
-    <p>PRDs for a least-privilege engine: discover what cloud identities can do, compare it with what they actually did, and recommend what to remove.</p>
-  </a>
-</div>
-
-<p class="shelf-more">That's everything so far — new topics appear here as I write them.</p>
-
-## How this notepad works
-
-<ul class="how-list">
-  <li>
-    <span class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
-    <p><strong>Working documents.</strong> Drafts go up early and get revised in place as I learn.</p>
-  </li>
-  <li>
-    <span class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
-    <p><strong>Plain Markdown.</strong> Every page has an <em>Edit this page on GitHub</em> link — the whole notepad is one repo.</p>
-  </li>
-  <li>
-    <span class="how-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-    <p><strong>Search everything.</strong> Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to jump anywhere.</p>
-  </li>
-</ul>
-
-{: .note }
-> These notes change as I learn, update, and reorganize them. If something looks wrong or outdated, it probably predates what I know now.
+<section class="connect-panel" aria-labelledby="connect-heading"><div><p class="eyebrow">GOOD WORK STARTS WITH A CONVERSATION</p><h2 id="connect-heading">Building in this space, too?</h2><p>I'm always happy to exchange ideas on cloud security,<br class="desktop-break"> product thinking, and turning complex problems into useful systems.</p></div><div class="connect-actions"><a class="action-primary" href="{{ site.profile.linkedin }}" target="_blank" rel="noopener noreferrer">Let's connect {% include ui/icon.html name="external" %}</a><a class="action-text" href="mailto:{{ site.profile.email }}">Or send me a note {% include ui/icon.html name="mail" %}</a></div></section>

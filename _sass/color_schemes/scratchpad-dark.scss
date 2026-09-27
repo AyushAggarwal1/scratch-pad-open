@@ -1,66 +1,40 @@
-// ------------------------------------------------------------------
-// "scratchpad-dark" — night counterpart of the scratchpad scheme,
-// reached via the toggle in the sidebar footer. Starts from the
-// theme's dark scheme (github-dark syntax colors), then applies the
-// notepad palette: night paper, soft ink links, amber accents.
-// ------------------------------------------------------------------
-
 @import "./color_schemes/dark";
-
 $color-scheme: scratchpad-dark;
-
-// Typography — must match the light scheme
-$body-font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI",
-  roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
-$mono-font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", menlo,
-  consolas, monospace;
-
+$body-font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+$mono-font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 $body-line-height: 1.5;
-$content-line-height: 1.66;
-$body-heading-line-height: 1.22;
-$font-size-4: 0.9375rem;
+$content-line-height: 1.75;
+$body-heading-line-height: 1.2;
+$font-size-4: 1rem;
+$border-radius: 7px;
+$content-width: 78rem;
+$nav-width: 16rem;
+$nav-width-md: 15rem;
 
-$border-radius: 6px;
-$content-width: 52rem;
-$nav-width: 17.25rem;
-$nav-width-md: 16rem;
-
-// Night paper
-$body-background-color: #14181f;
-$body-heading-color: #e9edf3;
-$body-text-color: #c2c9d4;
-$border-color: #2a313c;
-
-// Ink (interactive)
-$link-color: #dde3ec;
-$btn-primary-color: #343b45;
-$base-button-color: #1c232e;
-
-// Sidebar — slightly lifted against the night body
-$sidebar-color: #1d222b;
-$feedback-color: #262c37;
-$nav-child-link-color: #9aa4b2;
-
-// Panels
-$code-background-color: #0d1117;
-$code-linenumber-color: #e6edf3;
-$table-background-color: #191f28;
-$search-background-color: #191f28;
-$search-result-preview-color: #9aa4b2;
-
-// Brighten the -300 shades: on the night background they drive
-// callout borders/titles and label chips, and the stock values are
-// too dark to read.
-$blue-300: #5b8def;
-$purple-300: #9d8bf0;
-$green-300: #2f9e6e;
-$red-300: #e05252;
-$yellow-300: #d9a514;
-
-// Custom tokens used by _sass/custom/custom.scss
-$osn-accent: #e0a63f;
-$osn-accent-deep: #e5ae4f; // amber needs to be brighter on dark surfaces
-$osn-accent-soft: rgba(224, 166, 63, 0.28);
-$osn-nav-active-color: #ecc069; // current page marker: amber at night
-$osn-card-bg: #191f28;
-$osn-card-soon-bg: #171c24;
+$body-background-color: #181a19;
+$body-heading-color: #f0eee7;
+$body-text-color: #c0c2b9;
+$border-color: #353a34;
+$link-color: #efaa83;
+$btn-primary-color: #b64b2c;
+$base-button-color: #2c302b;
+$sidebar-color: #1e211e;
+$feedback-color: #2b302a;
+$nav-child-link-color: #b5b8ac;
+$code-background-color: #222621;
+$table-background-color: #20241f;
+$search-background-color: #252923;
+$search-result-preview-color: #b5b8ac;
+$osn-accent: #efaa83;
+$osn-muted: #a5aa9d;
+$osn-card-bg: #20241f;
+$osn-accent-soft: #362b23;
+$osn-green-soft: #25362c;
+$osn-blue-soft: #243239;
+$osn-green-ink: #b0cdb6;
+$osn-blue-ink: #aec9d4;
+$blue-300: #8ab1ef;
+$purple-300: #baa5ef;
+$green-300: #84b796;
+$red-300: #ed9992;
+$yellow-300: #d8ba72;

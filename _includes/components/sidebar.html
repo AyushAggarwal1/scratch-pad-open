@@ -1,0 +1,22 @@
+<header class="side-bar">
+  <div class="site-header">
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+  <div class="sidebar-scroll">
+    {% include_cached components/site_nav.html %}
+    <div class="sidebar-extra">
+      <p class="nav-caption">ON MY WORKBENCH</p>
+      <nav class="topic-shortcuts" aria-label="Featured topics">
+        {% for project in site.data.projects %}
+        <a href="{{ project.url | relative_url }}">{% include ui/icon.html name=project.icon %}<span>{{ project.topic }}</span><span class="shortcut-arrow" aria-hidden="true">↗</span></a>
+        {% endfor %}
+        <a href="{{ '/cmds/002_security-tools-cmds/' | relative_url }}">{% include ui/icon.html name="terminal" %}<span>Security tools</span><span class="shortcut-arrow" aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="status-dot"></span>Always a work in progress.<br><span>Written while building.</span></div>
+    </div>
+  </div>
+  <div class="d-md-block d-none site-footer">{% include nav_footer_custom.html %}</div>
+</header>

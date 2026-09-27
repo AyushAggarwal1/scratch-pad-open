@@ -6,6 +6,9 @@ nav_order: 2
 description: "Setting up a Sumo Logic hosted or installed collector, plus the rsyslog forwarding config for VM sources."
 ---
 
+# Sumo Logic
+
+
 ## Sumo Config
 
 1. Sign-In to Platform

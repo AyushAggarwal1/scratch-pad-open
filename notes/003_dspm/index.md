@@ -13,6 +13,8 @@ description: "Data Security Posture Management — onboarding, scan engine desig
 
 ## The documents
 
+The [finding catalog references](refs/) collect the research behind finding names, recognizers, and enrichment fields.
+
 <div class="shelf">
   <a class="shelf-card" href="dspm/">
     <span class="shelf-head">

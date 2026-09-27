@@ -5,6 +5,7 @@ grand_parent: Cmds
 nav_order: 5
 description: "Per-cloud Prowler identity-access scan commands (AWS, Azure, GCP, OCI) with OCSF JSON output."
 ---
+{% raw %}
 
 # Prowler
 
@@ -23,3 +24,4 @@ export AZURE_CLIENT_SECRET={{secret}}
 
 **oci**
 - prowler oci --category identity-access --oci-config-file {{file_path}} --compartment-id {{compartment_id}} --output-formats json-ocsf --output-filename oci-pw-identity.json --output-directory .
+{% endraw %}

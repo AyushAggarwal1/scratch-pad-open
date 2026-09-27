@@ -4,6 +4,7 @@ parent: Notes
 nav_order: 11
 description: "Requirement: embed a deep-link to the Finding Detail Drawer inside every generated ticket's description."
 ---
+{% raw %}
 
 # Ticket Templates
 
@@ -12,3 +13,5 @@ description: "Requirement: embed a deep-link to the Finding Detail Drawer inside
 - As a user, I want that URL will be redirected to the Platform and open the corresponding `Finding Detail Drawer` Panel.
 
 - {{base_url}}/issues/findings?vulnerability__data_type={{vulnerability.data_type}}&findingId={{id}}
+
+{% endraw %}

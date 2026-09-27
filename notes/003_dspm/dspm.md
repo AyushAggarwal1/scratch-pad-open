@@ -6,6 +6,9 @@ nav_order: 1
 description: "Onboarding flow, MVP scan services per cloud, supported file formats, and Event-Trail log types for the DSPM engine."
 ---
 
+# DSPM Overview & Onboarding
+
+
 **DSPM**
 
 Cyera - https://www.youtube.com/watch?v=3KHidWuaiDI

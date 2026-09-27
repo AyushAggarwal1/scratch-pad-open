@@ -5,6 +5,7 @@ grand_parent: Notes
 nav_order: 5
 description: "Registering a Bitbucket Cloud OAuth client, and the token/refresh/clone API calls used to onboard a workspace."
 ---
+{% raw %}
 
 # Bitbucket OAuth Cloud
 1. Go to https://bitbucket.org/accuknox-org/workspace/overview/ or,
@@ -64,3 +65,4 @@ description: "Registering a Bitbucket Cloud OAuth client, and the token/refresh/
 
 10. Clone Repos
     - git clone https://x-token-auth:{{auth_token}}@bitbucket.org/{{workspace}}/{{repo}}.git
+{% endraw %}

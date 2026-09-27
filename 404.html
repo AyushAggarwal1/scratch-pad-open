@@ -5,15 +5,10 @@ nav_exclude: true
 search_exclude: true
 sitemap: false
 permalink: /404.html
+page_class: error-page
+has_toc: false
 ---
-
-<p class="home-eyebrow"><span class="home-eyebrow-tick">▍</span>error 404</p>
-
-<h1 class="home-hero">This page isn't in the notepad.</h1>
-
-<p class="home-lede">It may have moved while I reorganized — everything lives under <em>Notes</em> now — or the link is simply stale.</p>
-
-<p>
-  <a href="{{ '/' | relative_url }}" class="btn btn-primary mr-2">Go to the home page</a>
-  <a href="{{ '/notes/' | relative_url }}" class="btn">Browse the notes</a>
-</p>
+<p class="eyebrow">404 / A LOOSE PAGE</p>
+<h1>This note slipped<br>out of the notebook.</h1>
+<p class="page-lede">The link may have changed while things were being reorganized. Search above or head back to a familiar place.</p>
+<div class="hero-actions"><a href="{{ '/' | relative_url }}" class="action-primary">Back to the overview {% include ui/icon.html name="arrow" %}</a><a href="{{ '/notes/' | relative_url }}" class="action-text">Browse all notes {% include ui/icon.html name="arrow" %}</a></div>

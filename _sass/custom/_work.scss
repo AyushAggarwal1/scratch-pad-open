@@ -1,0 +1,396 @@
+// Selected work. Each diagram refers to the content in that collection.
+.home-section {
+  padding-top: 42px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.main-content .section-heading .eyebrow {
+  margin-bottom: 9px;
+}
+
+.main-content .section-heading h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: $body-heading-color;
+}
+
+.main-content .section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  font-size: .73rem;
+  color: $body-text-color;
+  text-decoration: none;
+}
+
+.section-link .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.main-content .project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: $osn-card-bg;
+  color: $body-text-color;
+  text-decoration: none;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+}
+
+.main-content .project-card:hover {
+  border-color: $osn-accent;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(20, 25, 20, 0.05);
+}
+
+.project-art {
+  padding: 15px 17px 12px;
+  background: $osn-accent-soft;
+  color: $link-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.project-dspm .project-art {
+  background: $osn-green-soft;
+  color: $osn-green-ink;
+}
+
+.project-aspm .project-art {
+  background: $osn-blue-soft;
+  color: $osn-blue-ink;
+}
+
+.art-topline, .art-bottomline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  font: 0.5rem $mono-font-family;
+  letter-spacing: .025em;
+}
+
+.art-bottomline {
+  font-size: .55rem;
+  letter-spacing: 0;
+}
+
+.art-bottomline > span {
+  font-size: 17px;
+}
+
+.identity-diagram, .data-diagram, .pipeline-diagram {
+  height: 114px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-source {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 53px;
+  border: 1px solid rgba($osn-accent, 0.4);
+  border-radius: 7px;
+}
+
+.diagram-source .ui-icon {
+  width: 27px;
+  height: 27px;
+}
+
+.diagram-branches {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  margin-left: 25px;
+}
+
+.diagram-branches::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  top: 50%;
+  right: 100%;
+  border-top: 1px dashed currentColor;
+}
+
+.diagram-branches > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 123px;
+  padding: 4px 8px;
+  background: rgba($osn-card-bg, 0.6);
+  border: 1px solid rgba($osn-accent, 0.15);
+  border-radius: 3px;
+  font: 0.55rem $mono-font-family;
+}
+
+.diagram-branches .diagram-result {
+  border-color: $osn-accent;
+}
+
+.diagram-branches b {
+  font-weight: 400;
+}
+
+.data-diagram {
+  gap: 8px;
+}
+
+.data-column {
+  display: grid;
+  gap: 5px;
+}
+
+.data-column > span {
+  padding: 3px 7px;
+  border: 1px solid rgba($osn-green-ink, 0.25);
+  border-radius: 3px;
+  font: 0.54rem $mono-font-family;
+  background: rgba($osn-card-bg, 0.4);
+}
+
+.data-scanner {
+  display: grid;
+  gap: 6px;
+  place-items: center;
+  padding: 10px;
+  border: 1px solid rgba($osn-green-ink, 0.4);
+  border-radius: 5px;
+}
+
+.data-scanner > span {
+  font: 0.45rem $mono-font-family;
+}
+
+.data-finding {
+  display: flex;
+  align-items: center;
+  padding: 5px 7px;
+  background: rgba($osn-card-bg, 0.6);
+  border-radius: 3px;
+  font: 0.6rem $mono-font-family;
+}
+
+.data-finding .status-dot {
+  margin-right: 4px;
+  width: 4px;
+  height: 4px;
+  background: $osn-green-ink;
+}
+
+.diagram-connector {
+  font-size: 12px;
+}
+
+.pipeline-diagram > span {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  width: 55px;
+  height: 58px;
+  padding: 9px 4px;
+  border: 1px solid rgba($osn-blue-ink, 0.3);
+  border-radius: 5px;
+  background: rgba($osn-card-bg, 0.5);
+}
+
+.pipeline-diagram small {
+  font: 0.45rem $mono-font-family;
+}
+
+.pipeline-diagram > i {
+  width: 17px;
+  border-top: 1px dashed currentColor;
+}
+
+.pipeline-diagram .pipeline-gate {
+  border-color: $osn-blue-ink;
+}
+
+.project-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 21px 21px 16px;
+}
+
+.project-topic {
+  font: 0.59rem $mono-font-family;
+  letter-spacing: .09em;
+  color: $osn-accent;
+}
+
+.project-dspm .project-topic {
+  color: $osn-green-ink;
+}
+
+.project-aspm .project-topic {
+  color: $osn-blue-ink;
+}
+
+.main-content .project-copy h3 {
+  margin: 9px 0 10px;
+  font-size: 1.23rem;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+.main-content .project-copy p {
+  margin: 0 0 18px;
+  font-size: .79rem;
+  line-height: 1.65;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  margin-bottom: 18px;
+}
+
+.project-tags > span {
+  padding: 3px 7px;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  font-size: .56rem;
+  color: $osn-muted;
+}
+
+.project-read {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 13px;
+  border-top: 1px solid $border-color;
+  font-size: .7rem;
+  font-weight: 500;
+  color: $body-heading-color;
+}
+
+.project-read .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.section-aside {
+  color: $osn-muted;
+  font-size: .7rem;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 30px;
+}
+
+.main-content .resource-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  color: $body-text-color;
+  border-bottom: 1px solid $border-color;
+  text-decoration: none;
+}
+
+.resource-row:hover strong {
+  color: $link-color;
+}
+
+.resource-icon {
+  display: inline-flex;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  background: $feedback-color;
+  color: $body-text-color;
+  border-radius: 7px;
+}
+
+.resource-icon .ui-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.resource-row strong {
+  display: block;
+  color: $body-heading-color;
+  font-size: .88rem;
+  font-weight: 500;
+}
+
+.resource-row small {
+  display: block;
+  margin-top: 5px;
+  font-size: .71rem;
+  color: $osn-muted;
+  line-height: 1.6;
+}
+
+.resource-row > .ui-icon {
+  width: 17px;
+  height: 17px;
+  margin-left: auto;
+  color: $osn-muted;
+}
+
+.connect-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 29px 32px;
+  margin: 48px 0 20px;
+  background: $osn-accent-soft;
+  border: 1px solid rgba($osn-accent, 0.17);
+  border-radius: 7px;
+}
+
+.main-content .connect-panel .eyebrow {
+  margin-bottom: 10px;
+  color: $link-color;
+  font-size: .58rem;
+}
+
+.main-content .connect-panel h2 {
+  margin: 0 0 10px;
+  font-size: 1.6rem;
+}
+
+.main-content .connect-panel p:last-child {
+  margin: 0;
+  font-size: .78rem;
+}
+
+.connect-actions {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}

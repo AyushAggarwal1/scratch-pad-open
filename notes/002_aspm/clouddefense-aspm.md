@@ -6,6 +6,9 @@ nav_order: 3
 description: "A feature-by-feature look at CloudDefense's ASPM offering against AccuKnox, and the gaps worth exploiting."
 ---
 
+# CloudDefense Comparison
+
+
 CloudDefense ASPM
 - Onboard Source Code Repo from UI                  :       AccuKnox WIP
 - Co-Relation Scan of Code to DAST                  :            --

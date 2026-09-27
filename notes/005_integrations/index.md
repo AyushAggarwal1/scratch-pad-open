@@ -41,4 +41,4 @@ Setup notes for connecting AccuKnox to external ticketing, chat, and log-forward
 </div>
 
 {: .note }
-> Two integrations exist only as raw reference assets so far, with no write-up: [`qradar/qradar-server.py`](qradar/qradar-server.py) (a Flask relay for QRadar) and [`service-desk-plus/`](service-desk-plus/) (request/comment JSON payload templates).
+> Two integrations exist only as raw reference assets so far, with no write-up: [`qradar/qradar-server.py`](qradar/qradar-server.py) (a Flask relay for QRadar), and ServiceDesk Plus templates for [creating an incident](service-desk-plus/incidents-create.json) and [adding a comment](service-desk-plus/incident-comment.json).

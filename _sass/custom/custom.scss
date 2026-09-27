@@ -1,724 +1,104 @@
-// ------------------------------------------------------------------
-// Open Source Notepad — custom styling on top of Just the Docs.
-//
-// Everything here is driven by scheme variables, so it compiles into
-// both the light ("scratchpad") and dark ("scratchpad-dark") builds:
-// warm paper surfaces, graphite-ink interactive elements, and a small
-// amber highlighter accent.
-// ------------------------------------------------------------------
+// Shared by the light and dark builds. Theme-specific values live in color_schemes.
+$osn-accent: #b64b2c !default;
+$osn-muted: #686c63 !default;
+$osn-card-bg: #fffefa !default;
+$osn-accent-soft: #f6e9de !default;
+$osn-green-soft: #eaf0e8 !default;
+$osn-blue-soft: #eaf0f2 !default;
+$osn-green-ink: #425e4e !default;
+$osn-blue-ink: #47616c !default;
 
-// Fallbacks so the stock `light`/`dark` stylesheets (also compiled by
-// the theme) build cleanly; the scratchpad schemes override these.
-$osn-accent: #e0a63f !default;
-$osn-accent-deep: #c68d2c !default;
-$osn-accent-soft: rgba(224, 166, 63, 0.34) !default;
-$osn-nav-active-color: #1f242b !default;
-$osn-card-bg: #ffffff !default;
-$osn-card-soon-bg: #f7f7f2 !default;
+:root {
+  color-scheme: light;
+}
 
-// ------------------------------------------------------------------
-// Sidebar
-// ------------------------------------------------------------------
-
-.site-title {
-  font-family: $mono-font-family;
-  font-size: 0.9375rem !important;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  text-transform: lowercase;
-
-  &::before {
-    margin-right: 0.5rem;
-    color: $osn-accent-deep;
-    content: "▍";
-    animation: osn-blink 1.6s ease-in-out infinite;
+@if $color-scheme == scratchpad-dark {
+  :root {
+    color-scheme: dark;
   }
 }
 
-@keyframes osn-blink {
-  50% {
-    opacity: 0.3;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
 
-// Navigation: slightly larger type, rounded row pills
-.side-bar .site-nav .nav-list .nav-list-item {
-  font-size: 0.8125rem !important;
-
-  .nav-list-link {
-    margin: 1px 0.5rem;
-    border-radius: 6px;
-
-    &:hover {
-      background-color: $feedback-color;
-      background-image: none;
-    }
-
-    &.active {
-      color: $osn-nav-active-color;
-      background-color: rgba($osn-nav-active-color, 0.08);
-      background-image: none;
-    }
-  }
-
-  .nav-list-expander {
-    border-radius: 6px;
-
-    &:hover {
-      background-color: $feedback-color;
-      background-image: none;
-    }
-  }
+body {
+  -webkit-font-smoothing: antialiased;
 }
 
-// Sidebar footer (holds the scheme toggle)
-.side-bar .site-footer {
-  padding-top: 0.85rem;
-  padding-bottom: 0.85rem;
-  border-top: 1px solid $border-color;
+[hidden] {
+  display: none !important;
 }
 
-// ------------------------------------------------------------------
-// Header search: a contained, rounded field
-// ------------------------------------------------------------------
-
-@include mq(md) {
-  .search-input-wrap {
-    top: 50%;
-    height: 2.45rem !important;
-    background-color: $search-background-color;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    transform: translateY(-50%);
-
-    &:focus-within {
-      border-color: rgba($link-color, 0.55);
-      box-shadow: 0 0 0 3px rgba($link-color, 0.08);
-    }
-  }
-
-  .search-input {
-    padding-left: 2.3rem;
-    background-color: transparent;
-  }
-
-  .search-label {
-    padding-left: 0.6rem;
-  }
-
-  .search-active .search-input-wrap {
-    border-radius: 8px;
-  }
+.ui-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  vertical-align: middle;
 }
 
-.search-input:focus {
+a, button, input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid $osn-accent;
+  outline-offset: 4px;
+}
+
+.main-content:focus {
   outline: none;
 }
 
-.search-results {
-  border: 1px solid $border-color;
-  border-radius: 8px;
-  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.12);
+.main-content a {
+  text-underline-offset: 3px;
 }
 
-// ------------------------------------------------------------------
-// Scheme toggle button
-// ------------------------------------------------------------------
-
-.scheme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.65rem;
-  font-family: $mono-font-family;
-  font-size: 0.71875rem;
-  line-height: 1;
-  color: $body-text-color;
-  cursor: pointer;
-  background-color: $base-button-color;
-  border: 1px solid $border-color;
-  border-radius: 6px;
-  transition: color 150ms ease, border-color 150ms ease;
-
-  svg {
-    width: 0.85rem;
-    height: 0.85rem;
-    color: $osn-accent-deep;
-  }
-
-  .icon-sun {
-    display: none;
-  }
-
-  &.is-dark .icon-moon {
-    display: none;
-  }
-
-  &.is-dark .icon-sun {
-    display: inline-block;
-  }
-
-  &:hover {
-    color: $link-color;
-    border-color: $link-color;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $link-color;
-    outline-offset: 2px;
-  }
-}
-
-// ------------------------------------------------------------------
-// Content typography
-// ------------------------------------------------------------------
-
-.main-content {
-  h1 {
-    font-size: 2.25rem !important;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  h2 {
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-
-  h3 {
-    font-size: 1.0625rem !important;
-    font-weight: 600;
-  }
-
-  h4 {
-    font-size: 0.9375rem !important;
-    font-weight: 600;
-    letter-spacing: normal;
-    text-transform: none;
-  }
-
-  h5 {
-    font-weight: 600;
-  }
-
-  // Ruled line above each section, like a fresh notebook entry
-  h2:not(.text-delta) {
-    margin-top: 2.75rem;
-    padding-top: 1.4rem;
-    font-size: 1.375rem !important;
-    border-top: 1px solid $border-color;
-  }
-
-  // Quieter link underlines that ink up on hover
-  a:not(.btn):not(.shelf-card) {
-    text-decoration-color: rgba($link-color, 0.35);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-
-    &:hover {
-      text-decoration-color: currentColor;
-    }
-  }
-
-  // Flat, modern buttons
-  p > .btn {
-    padding: 0.5em 1.1em;
-    border-radius: 8px;
-    box-shadow: none;
-
-    &:active {
-      box-shadow: none;
-    }
-
-    &:focus,
-    &:focus:hover {
-      box-shadow: 0 0 0 3px rgba($link-color, 0.2);
-    }
-  }
-
-  p > .btn:not([class*="btn-"]) {
-    color: $body-heading-color;
-    background-color: $body-background-color;
-    border: 1px solid $border-color;
-
-    &:hover {
-      color: $link-color;
-      background-color: $body-background-color;
-      border-color: rgba($link-color, 0.5);
-    }
-  }
-
-  p > .btn-primary {
-    background-color: $btn-primary-color;
-    background-image: none;
-
-    &:hover {
-      background-color: darken($btn-primary-color, 5%);
-      background-image: none;
-    }
-  }
-
-  // Example quotes (callouts carry their own classes)
-  blockquote:not([class]) {
-    padding: 0.15rem 0 0.15rem 1rem;
-    margin-left: 0;
-    border-left: 3px solid $border-color;
-  }
-
-  // Table headers as quiet small caps
-  th {
-    font-size: 0.71875rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  hr {
-    height: 1px;
-    margin: 2rem 0;
-    background-color: $border-color;
-    border: 0;
-  }
-}
-
-::selection {
-  background: $osn-accent-soft;
-}
-
-// Meta chips under document titles (`{: .label }` paragraphs) —
-// unified neutral pills, matching the card chips
-.main-content p.label {
-  padding: 0.2em 0.65em;
-  margin-right: 0.25rem;
-  margin-left: 0;
-  font-family: $mono-font-family;
-  font-size: 0.65625rem !important;
-  letter-spacing: 0.05em;
-  color: $body-text-color;
-  background-color: $base-button-color;
-  border: 1px solid $border-color;
-  border-radius: 999px;
-}
-
-// ------------------------------------------------------------------
-// "On this page" panel (kramdown TOC)
-// ------------------------------------------------------------------
-
-.main-content #markdown-toc {
-  padding: 1rem 1.25rem;
-  margin: 1rem 0 2rem;
-  font-size: 0.84375rem;
-  list-style: none;
-  background-color: $code-background-color;
-  border: 1px solid $border-color;
-  border-radius: 8px;
-
-  @include mq(sm) {
-    columns: 2;
-    column-gap: 2rem;
-  }
-
-  li {
-    margin: 0.2rem 0;
-    break-inside: avoid;
-  }
-
-  a {
-    color: $body-text-color;
-    text-decoration: none;
-
-    &:hover {
-      color: $link-color;
-      text-decoration: underline;
-    }
-  }
-}
-
-// ------------------------------------------------------------------
-// Panels: code, tables
-// ------------------------------------------------------------------
-
-.main-content div.highlighter-rouge {
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-}
-
-.table-wrapper {
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  box-shadow: none;
-}
-
-// ------------------------------------------------------------------
-// Home page
-// ------------------------------------------------------------------
-
-.home-eyebrow {
-  margin-bottom: 0.5rem;
-  font-family: $mono-font-family;
-  font-size: 0.78125rem;
-  letter-spacing: 0.04em;
-  color: $link-color;
-
-  .home-eyebrow-tick {
-    color: $osn-accent-deep;
-  }
-}
-
-.main-content h1.home-hero {
-  max-width: 34rem;
-  margin-top: 0.25rem;
-  font-size: 2.25rem !important;
-  line-height: 1.15;
-
-  @include mq(sm) {
-    font-size: 2.75rem !important;
-  }
-}
-
-.hl-sweep {
-  background-image: linear-gradient(
-    180deg,
-    transparent 58%,
-    $osn-accent-soft 58%,
-    $osn-accent-soft 94%,
-    transparent 94%
-  );
-  box-decoration-break: clone;
-}
-
-.home-lede {
-  max-width: 38rem;
-  font-size: 1.0625rem;
-  color: $body-text-color;
-}
-
-// Shelf: section cards
-.shelf {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 0.5rem;
-}
-
-// Shared: icon tile + small mono chip (cards, index heads)
-.main-content .shelf-icon {
-  display: inline-flex;
-  flex: none;
-  width: 1.75rem;
-  height: 1.75rem;
-  color: $link-color;
-  background-color: rgba($link-color, 0.08);
-  border-radius: 7px;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 1rem;
-    height: 1rem;
-  }
-}
-
-.main-content .shelf-chip {
-  margin-left: auto;
-  padding: 0.1rem 0.55rem;
-  font-family: $mono-font-family;
-  font-size: 0.65625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: $body-text-color;
-  border: 1px solid $border-color;
-  border-radius: 999px;
-  opacity: 0.8;
-}
-
-.main-content .shelf-card {
-  display: block;
-  padding: 1.25rem 1.35rem;
-  color: $body-text-color;
-  text-decoration: none;
-  background-color: $osn-card-bg;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  transition: border-color 150ms ease, transform 150ms ease,
-    box-shadow 150ms ease;
-
-  .shelf-head {
-    display: flex;
-    gap: 0.55rem;
-    align-items: center;
-  }
-
-  .shelf-path {
-    font-family: $mono-font-family;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: $link-color;
-  }
-
-  strong {
-    display: block;
-    margin-top: 0.55rem;
-    color: $body-heading-color;
-  }
-
-  p {
-    margin: 0.35rem 0 0;
-    font-size: 0.84375rem;
-    line-height: 1.55;
-  }
-}
-
-a.shelf-card:hover {
-  background-image: none;
-  border-color: rgba($link-color, 0.45);
-  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.07);
-  transform: translateY(-1px);
-}
-
-.main-content .shelf-card.is-soon {
-  background-color: $osn-card-soon-bg;
-  border-style: dashed;
-  opacity: 0.78;
-}
-
-.main-content .shelf-more {
-  margin: 0.75rem 0 0;
-  font-size: 0.8125rem;
-  color: $body-text-color;
-  opacity: 0.65;
-}
-
-// Icon list ("How this notepad works")
-.main-content ul.how-list {
-  display: grid;
-  gap: 0.8rem;
-  padding-left: 0;
-  margin: 1.25rem 0 0;
-  list-style: none;
-
-  > li {
-    display: flex;
-    gap: 0.8rem;
-    align-items: flex-start;
-    padding-left: 0;
-    margin: 0;
-
-    &::before {
-      content: none;
-    }
-  }
-
-  .how-icon {
-    display: inline-flex;
-    flex: none;
-    width: 1.75rem;
-    height: 1.75rem;
-    margin-top: 0.1rem;
-    color: $link-color;
-    background-color: rgba($link-color, 0.08);
-    border-radius: 7px;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-      width: 1rem;
-      height: 1rem;
-    }
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.9375rem;
-  }
-
-  strong {
-    color: $body-heading-color;
-  }
-}
-
-// ------------------------------------------------------------------
-// Footer social links
-// ------------------------------------------------------------------
-
-.footer-social {
-  display: flex;
-  gap: 0.5rem;
-  margin: 0.5rem 0 0.75rem;
-}
-
-footer .footer-social-link {
-  display: inline-flex;
-  width: 1.9rem;
-  height: 1.9rem;
-  color: $body-text-color;
-  text-decoration: none;
-  background-color: $base-button-color;
-  border: 1px solid $border-color;
-  border-radius: 7px;
-  align-items: center;
-  justify-content: center;
-  transition: color 150ms ease, border-color 150ms ease;
-
-  svg {
-    width: 0.95rem;
-    height: 0.95rem;
-  }
-
-  &:hover {
-    color: $link-color;
-    border-color: $link-color;
-    background-image: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $link-color;
-    outline-offset: 2px;
-  }
-}
-
-// ------------------------------------------------------------------
-// Notes index: topic panels with document rows
-// ------------------------------------------------------------------
-
-.main-content .index-topic {
-  margin: 1.5rem 0 1rem;
-  overflow: hidden;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-}
-
-.main-content .index-topic-head {
-  display: flex;
-  gap: 0.65rem;
-  align-items: center;
-  padding: 1.05rem 1.25rem 0.35rem;
-}
-
-.main-content .index-topic-title {
+.main-content h1 {
+  font-size: 2.7rem !important;
   font-weight: 600;
-  color: $body-heading-color;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  letter-spacing: -.045em;
+  line-height: 1.12;
 }
 
-.main-content .index-topic-desc {
-  padding: 0 1.25rem 1rem;
-  margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.55;
-}
-
-.main-content .index-docs {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  > li {
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid $border-color;
-
-    &::before {
-      content: none;
-    }
-  }
-
-  a {
-    display: flex;
-    gap: 1rem;
-    align-items: baseline;
-    justify-content: space-between;
-    padding: 0.7rem 1.25rem;
-    text-decoration: none;
-    transition: background-color 150ms ease;
-
-    &:hover {
-      background-color: $feedback-color;
-    }
-  }
-}
-
-.main-content .index-doc-title {
-  font-size: 0.9375rem;
+.main-content h2 {
   font-weight: 500;
-  color: $body-heading-color;
+  letter-spacing: -.025em;
 }
 
-.main-content .index-doc-meta {
+.main-content h3 {
+  font-weight: 500;
+}
+
+.main-content p {
+  line-height: 1.7;
+}
+
+.main-content .eyebrow, .eyebrow {
+  margin: 0 0 1.25rem;
+  color: $osn-muted;
+  font-family: $mono-font-family;
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  line-height: 1.5;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
   flex: none;
-  font-family: $mono-font-family;
-  font-size: 0.71875rem;
-  color: $body-text-color;
-  opacity: 0.7;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: $osn-accent;
+  vertical-align: middle;
 }
 
-// ------------------------------------------------------------------
-// Prev / next pager between documents
-// ------------------------------------------------------------------
-
-.main-content .doc-pager {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 3rem;
-}
-
-.main-content .doc-pager-link {
-  display: block;
-  padding: 0.85rem 1.1rem;
-  text-decoration: none;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  transition: background-color 150ms ease, border-color 150ms ease;
-
-  &:hover {
-    background-color: $feedback-color;
-    border-color: rgba($link-color, 0.45);
-  }
-
-  &.is-next {
-    text-align: right;
-  }
-}
-
-.main-content .doc-pager-label {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-family: $mono-font-family;
-  font-size: 0.65625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: $body-text-color;
-  opacity: 0.65;
-}
-
-.main-content .doc-pager-title {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: $body-heading-color;
-}
-
-// ------------------------------------------------------------------
-// Motion preferences
-// ------------------------------------------------------------------
-
-@media (prefers-reduced-motion: reduce) {
-  .site-title::before {
-    animation: none;
-  }
-
-  .main-content .shelf-card,
-  .main-content .index-docs a,
-  .main-content .doc-pager-link,
-  .scheme-toggle,
-  footer .footer-social-link {
-    transition: none;
-  }
-
-  a.shelf-card:hover {
-    transform: none;
-  }
-}
+@import "custom/shell";
+@import "custom/home";
+@import "custom/work";
+@import "custom/library";
+@import "custom/documents";
+@import "custom/responsive";

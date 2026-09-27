@@ -1,78 +1,97 @@
-# Open Source Notepad
+# Ayush's open notebook
 
-The public half of my scratchpad — PRDs, commands, references, and field
-notes from building cloud-security products. Everything is just notes,
-organized by topic.
+A public notebook and work showcase by **Ayush Aggarwal**, a TPM working on
+cloud-security products. Product requirements, architecture notes, practical
+security commands, and references across CIEM, DSPM, and ASPM.
 
 **Live site:** https://ayushaggarwal1.github.io/scratch-pad-open/
 
-## Repository layout
+## How the site works
 
-```text
-index.md                  → home page
-404.html                  → not-found page
-notes/
-  index.md                → the "Notes" section page (topic cards)
-  ciem/
-    index.md              → topic page (CIEM)
-    01-ciem-permission.md → a note
-    02-ciem-permission.md → a note
-_config.yml               → site config (theme pin, search, callouts…)
-_sass/                    → color schemes + custom styling
-_includes/                → fonts, favicon, scheme toggle
-assets/css/               → dark-scheme stylesheet entry point
+This is a static **Jekyll** site using **Just the Docs v0.12.0**, with a custom
+layout and visual system. Markdown is the content source. GitHub Pages builds
+and hosts the site; there is no application server or JavaScript build step.
+
+- **Overview** introduces the author and showcases three areas of work.
+- **Notes** lists every topic and its documents, with optional category and text filters.
+- **Cmds** collects scanner commands and compliance scripts.
+- **About** connects the product work to the person behind it.
+- The theme supplies full-text search, nested navigation, code copying, and heading links.
+- Custom JavaScript adds topic filters and a persistent light/dark preference.
+  All document links remain usable without JavaScript.
+
+The technical documents are working notes and specifications. Featured copy
+reflects their contents, without presenting proposed features as shipped results.
+
+## Local development
+
+Use Ruby 3.3 or newer and the Bundler version recorded in `Gemfile.lock`.
+The first build needs internet access to download the pinned remote theme.
+
+```sh
+bundle install
+bundle exec jekyll serve --livereload
 ```
 
-## Publishing
+Open http://localhost:4000/scratch-pad-open/.
 
-Pushing to `main` is deploying. GitHub Pages (Settings → Pages →
-"Deploy from a branch": `main` / root) rebuilds the site automatically,
-usually within a couple of minutes. There is no build step to run locally.
+To build and check internal links, assets, and heading anchors:
 
-## Writing notes
+```sh
+bundle exec jekyll build
+python3 scripts/check_site.py
+node --check assets/js/notebook.js
+```
 
-### Add a note to an existing topic
+Python 3.9+ is needed only for the link checker. Node is needed only for the
+optional JavaScript syntax check. Neither is required to publish the site.
 
-Create a Markdown file inside the topic folder, e.g.
-`notes/ciem/jit-access.md`:
+The checker also accepts another destination/base path:
+
+```sh
+python3 scripts/check_site.py /tmp/site --baseurl /scratch-pad-open
+```
+
+## Editing the site
+
+| File | Purpose |
+| --- | --- |
+| `index.md` | Introduction, selected work, useful starting points, contact panel |
+| `about.md` | Author introduction and links to work |
+| `_data/projects.yml` | Featured work, descriptions, tags, and sidebar shortcuts |
+| `_data/topics.yml` | Topic order, categories, descriptions, icons, and destinations |
+| `notes/index.md` | Topic library; child links and counts come from page metadata |
+| `cmds/index.md` | Tool collections and automatically listed scanner guides |
+| `_config.yml` | Profile links, metadata, theme pin, search, and deployment path |
+| `_layouts/default.html` | Shared layout and document reading metadata |
+| `_includes/` | Branding, navigation, icons, profile, header, and footer |
+| `_sass/color_schemes/` | Light/dark colors and shared typography settings |
+| `_sass/custom/` | Shared styles plus shell, homepage, library, document, and responsive partials |
+| `assets/js/notebook.js` | Theme persistence, search input support, and topic filtering |
+| `assets/images/social-card.svg` | Editable source for the social preview |
+| `assets/images/social-card.png` | 1200 × 630 social preview used by Open Graph and Twitter metadata |
+| `scripts/check_site.py` | Dependency-free validation of the generated site |
+
+The existing numbered content folders and document URLs are preserved. Raw
+Python, JSON, and other references are static downloads, not site executables.
+
+### Add a note
+
+Create a Markdown file in the actual topic folder, for example
+`notes/004_ciem/jit-access.md`:
 
 ```yaml
 ---
-title: JIT Access          # name shown in the sidebar
-parent: CIEM               # must match the topic index's title
+title: JIT Access
+parent: CIEM
 grand_parent: Notes
-nav_order: 3               # position within the topic
+nav_order: 3
+description: "A short, useful description of the document."
 ---
 ```
 
-Below the front matter, write normal Markdown: one `# Title` at the top,
-`##` for sections. Sidebar, breadcrumbs, and search pick the page up
-automatically on push.
-
-### Start a new topic
-
-Create a folder under `notes/` with an `index.md`:
-
-```yaml
----
-title: Kubernetes          # the topic's name
-parent: Notes
-nav_order: 2               # position within Notes
-has_children: true
----
-```
-
-Pages inside the folder then use `parent: Kubernetes` and
-`grand_parent: Notes`. Then add the topic to the index on
-`notes/index.md` (copy an existing `index-topic` block and its document
-rows) — the index is hand-curated; navigation and search work without
-it.
-
-### Optional flourishes
-
-Copy-paste from the CIEM pages:
-
-**"On this page" panel** (for long documents; lists `##` sections):
+Start the body with one `#` heading. The note automatically appears in the
+sidebar, search, and the Notes library under CIEM. For a long document, add:
 
 ```markdown
 ## On this page
@@ -82,69 +101,44 @@ Copy-paste from the CIEM pages:
 {:toc}
 ```
 
-**Status chips** under the title:
+If an example contains literal double-brace placeholders, wrap that example in
+Liquid's `raw` / `endraw` tags so Jekyll doesn't interpret it as a template.
 
-```markdown
-Draft v0.1
-{: .label .label-yellow }
-CIEM · CNAPP
-{: .label .label-purple }
-```
+### Add a topic
 
-**Callouts** (defined in `_config.yml`):
+1. Create a topic index with `title`, `parent: Notes`, `nav_order`,
+   `has_children: true`, and `has_toc: false` in its front matter.
+2. Add an entry to `_data/topics.yml`. Use the same `title` as the topic index,
+   `section: notes`, and `category: product` or `reference`.
+3. Use a full site path for `url`, such as `/notes/018_new-topic/`.
+4. Child pages use the topic title as `parent` and `grand_parent: Notes`.
 
-```markdown
-{: .note }
-> Something worth flagging.
-```
+A standalone note can also be a topic: link its page directly from the data
+file. The library shows it as one note. Add featured work to `_data/projects.yml`
+and choose a corresponding homepage diagram if you add a new visual category.
 
-Also available: `{: .important }`, `{: .warning }`, `{: .new }`.
+For template links, use Jekyll's `relative_url` filter so the site works under
+its GitHub Pages project path. Raw Markdown links within existing topic folders
+also work; avoid links to folders that have no index page.
 
-**Mermaid diagrams**: uncomment the `mermaid:` block in `_config.yml`,
-then use ```` ```mermaid ```` code fences.
+## Design and checks
 
-### Edit entirely in the browser
+Warm paper, charcoal type, and terracotta accents give the notebook a consistent
+identity. Typography uses IBM Plex Sans/Mono and an italic Newsreader accent,
+with system fallbacks. The notebook and project illustrations are HTML/CSS/SVG.
 
-Every page has an *Edit this page on GitHub* link in its footer. Editing
-there and committing to `main` publishes automatically — no local setup
-needed. This is the lowest-friction way to jot a quick note.
+The theme preference uses the existing `osn-scheme` localStorage key, falls back
+to the system preference, and follows system changes until a preference is saved.
+Controls have keyboard focus states, filters announce result counts, and motion
+respects `prefers-reduced-motion`.
 
-## Design
+Before publishing, preview the overview, library, commands, and a long document
+at desktop and mobile widths. Check search (Ctrl/Cmd+K), navigation, filters and
+reset, code copying, theme persistence, and internal links. If you update the
+social-card SVG, export a matching 1200 × 630 PNG before publishing.
 
-Built on [Just the Docs](https://just-the-docs.com), pinned in
-`_config.yml` via `remote_theme: just-the-docs/just-the-docs@v0.12.0`.
-Leave the pin unless deliberately upgrading (custom styling is written
-against this version).
+## Publishing
 
-The look — pure-white light mode, dark mode behind the sidebar toggle,
-graphite-ink interactive elements + a single amber (`#e0a63f`) accent, IBM Plex type:
-
-- `_sass/color_schemes/scratchpad.scss` — light scheme (default); all
-  colors live in scheme variables
-- `_sass/color_schemes/scratchpad-dark.scss` — dark scheme
-- `_sass/custom/custom.scss` — sidebar, home page, cards, icons, polish
-- `_includes/head_custom.html` — fonts, favicon, scheme restore on load
-- `_includes/nav_footer_custom.html` — the dark/light toggle
-  (persists to localStorage key `osn-scheme`)
-
-To change the accent: swap `$link-color` / `$btn-primary-color` /
-`$osn-nav-active-color` in both scheme files. Card icons are small inline
-Feather-style SVGs (`stroke="currentColor"`), so they recolor themselves.
-
-## Local preview
-
-With Ruby installed:
-
-```sh
-bundle install
-bundle exec jekyll serve --livereload
-# open http://localhost:4000/scratch-pad-open/
-```
-
-Without Ruby, a one-off build in Docker (mirrors the GitHub Pages
-environment):
-
-```sh
-docker run --rm -v "$PWD":/src:ro ruby:3.3 bash -c \
-  "cp -r /src /build && cd /build && bundle install --quiet && bundle exec jekyll build -d /tmp/site && echo OK"
-```
+With GitHub Pages configured to deploy from `main` at the repository root,
+pushing to `main` publishes the site. Review and run the build/link checks before
+pushing. This refactor does not require a hosting migration or a new service.

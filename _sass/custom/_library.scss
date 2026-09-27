@@ -1,0 +1,245 @@
+// Document library: usable without JavaScript, enhanced with combined filters.
+.main-content .page-lede {
+  max-width: 680px;
+  margin-bottom: 35px;
+  font-size: 1.06rem;
+  color: $osn-muted;
+}
+
+.library-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 0;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.filter-buttons button {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 8px 11px;
+  background: transparent;
+  color: $body-text-color;
+  font: 0.76rem $body-font-family;
+  cursor: pointer;
+}
+
+.filter-buttons .is-active {
+  border-color: rgba($osn-accent, 0.2);
+  background: $osn-accent-soft;
+  color: $link-color;
+}
+
+.topic-search input {
+  width: 235px;
+  padding: 10px 12px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background: $osn-card-bg;
+  color: $body-text-color;
+  font: 0.75rem $body-font-family;
+}
+
+.main-content .library-count {
+  margin: 18px 0;
+  font: 0.65rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 22px;
+}
+
+.topic-card {
+  overflow: hidden;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: $osn-card-bg;
+}
+
+.topic-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 23px 23px 0;
+}
+
+.topic-count {
+  font: 0.64rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.main-content .topic-card h2 {
+  margin: 18px 23px 10px;
+  font-size: 1.3rem;
+}
+
+.topic-card h2 a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $body-heading-color;
+  text-decoration: none;
+}
+
+.topic-card h2 a:hover {
+  color: $link-color;
+}
+
+.topic-card h2 .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.main-content .topic-card > p {
+  margin: 0 23px 22px;
+  font-size: .83rem;
+}
+
+.main-content .topic-documents {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.main-content .topic-documents li {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid $border-color;
+}
+
+.main-content .topic-documents li::before {
+  content: none;
+}
+
+.topic-documents a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 23px;
+  color: $body-text-color;
+  text-decoration: none;
+  font-size: .78rem;
+}
+
+.topic-documents a:hover {
+  background: $feedback-color;
+  color: $link-color;
+}
+
+.topic-documents a > span {
+  color: $osn-muted;
+}
+
+.topic-open {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 23px;
+  border-top: 1px solid $border-color;
+  text-decoration: none;
+  font-size: .77rem;
+}
+
+.topic-open .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.library-empty {
+  padding: 35px;
+  text-align: center;
+  border: 1px dashed $border-color;
+  border-radius: 7px;
+}
+
+.library-footnote {
+  margin-top: 35px;
+  font-size: .82rem;
+}
+
+.library-footnote .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.tool-collections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.main-content .tool-collection {
+  display: block;
+  padding: 27px;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: $osn-card-bg;
+  color: $body-text-color;
+  text-decoration: none;
+}
+
+.tool-collection .resource-icon {
+  margin-bottom: 22px;
+  width: 44px;
+  height: 44px;
+}
+
+.tool-collection .eyebrow {
+  display: block;
+}
+
+.main-content .tool-collection h2 {
+  margin-top: 0;
+  font-size: 1.7rem;
+}
+
+.main-content .tool-collection p {
+  font-size: .9rem;
+}
+
+.tool-collection:hover {
+  border-color: $osn-accent;
+}
+
+.main-content .tool-list-heading {
+  margin-top: 45px;
+}
+
+.about-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+  margin: 30px 0 45px;
+}
+
+.about-principles > div {
+  padding-top: 18px;
+  border-top: 1px solid $border-color;
+}
+
+.about-principles > div > span {
+  font: 0.7rem $mono-font-family;
+  color: $osn-accent;
+}
+
+.main-content .about-principles h3 {
+  font-size: 1.12rem;
+}
+
+.main-content .about-principles p {
+  font-size: .86rem;
+}

@@ -1,0 +1,192 @@
+// Existing Markdown collections share the new visual system.
+.document-meta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+  font: 0.65rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.document-meta > span:first-child {
+  color: $link-color;
+}
+
+.main-content .table-wrapper {
+  max-width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.main-content table {
+  font-size: .85rem;
+}
+
+.main-content div.highlighter-rouge {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+}
+
+.main-content pre {
+  font-size: .78rem;
+}
+
+.main-content img {
+  border-radius: 6px;
+}
+
+.main-content #markdown-toc {
+  padding: 22px 22px 22px 40px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  background: $osn-card-bg;
+  font-size: .85rem;
+}
+
+.breadcrumb-nav {
+  font-size: .74rem;
+}
+
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.main-content .shelf-card {
+  display: block;
+  padding: 23px;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: $osn-card-bg;
+  color: $body-text-color;
+  text-decoration: none;
+}
+
+.main-content .shelf-card:hover {
+  border-color: $osn-accent;
+}
+
+.shelf-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.shelf-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  background: $osn-accent-soft;
+  color: $link-color;
+}
+
+.shelf-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.shelf-path {
+  font: 0.67rem $mono-font-family;
+}
+
+.shelf-chip {
+  margin-left: auto;
+  font: 0.58rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.shelf-card > strong {
+  color: $body-heading-color;
+  font-weight: 500;
+}
+
+.main-content .shelf-card p {
+  margin-bottom: 0;
+  font-size: .85rem;
+}
+
+.doc-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.main-content .doc-pager-link {
+  display: block;
+  padding: 18px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.doc-pager-link.is-next {
+  text-align: right;
+}
+
+.doc-pager-label {
+  display: block;
+  margin-bottom: 6px;
+  font: 0.65rem $mono-font-family;
+  color: $osn-muted;
+}
+
+.doc-pager-title {
+  font-size: .84rem;
+  color: $body-heading-color;
+}
+
+.main-content footer {
+  padding-top: 5px;
+  font-size: .7rem;
+}
+
+.main-content > hr {
+  margin-top: 42px;
+}
+
+.footer-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.main-content .footer-line p {
+  font-size: .69rem;
+  color: $body-text-color;
+}
+
+.footer-line p > span {
+  display: block;
+  margin-top: 3px;
+  color: $osn-muted;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a {
+  font-size: .7rem;
+  color: $body-text-color;
+  text-decoration: none;
+}
+
+.main-content footer .text-small {
+  font-size: .67rem !important;
+  color: $osn-muted;
+}
+
+#back-to-top {
+  font-size: .68rem;
+}

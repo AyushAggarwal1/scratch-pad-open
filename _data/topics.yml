@@ -1,0 +1,91 @@
+- title: CIEM
+  label: Identity & access
+  section: notes
+  category: product
+  icon: shield
+  url: /notes/004_ciem/
+  description: Permission discovery, usage analysis, and least-privilege recommendations.
+- title: DSPM
+  label: Data security
+  section: notes
+  category: product
+  icon: database
+  url: /notes/003_dspm/
+  description: Cloud onboarding, scan-engine design, and sensitive-data recognizers.
+- title: ASPM
+  label: Application security
+  section: notes
+  category: product
+  icon: branch
+  url: /notes/002_aspm/
+  description: Phased delivery, source-control integrations, and security quality gates.
+- title: Rule Engine for Assets
+  label: Rule engine
+  section: notes
+  category: product
+  icon: workflow
+  url: /notes/007_rule-engine-assets/
+  description: Asset-scoped triggers, conditions, and actions, from use cases to backend requirements.
+- title: Event Trail
+  label: Event trail
+  section: notes
+  category: product
+  icon: activity
+  url: /notes/006_event-trail/Event-Trail/
+  description: A unified action and alert log, its pipeline, schemas, and payload examples.
+- title: Integrations
+  label: Integrations
+  section: notes
+  category: reference
+  icon: link
+  url: /notes/005_integrations/
+  description: Connecting ticketing, team notifications, and log forwarding to security workflows.
+- title: Cloud Account Naming
+  label: Cloud account naming
+  section: notes
+  category: reference
+  icon: cloud
+  url: /notes/009_name-cloud-account/doc/
+  description: CLI references for account, project, and subscription names across four clouds.
+- title: OpenShift Onboarding
+  label: OpenShift
+  section: notes
+  category: reference
+  icon: layers
+  url: /notes/014_openshift/openshift/
+  description: Operator installation, secrets, and validation for cluster onboarding.
+- title: Oracle Cloud Setup
+  label: Oracle Cloud
+  section: notes
+  category: reference
+  icon: cloud
+  url: /notes/017_oracle/oracle/
+  description: IAM policy references for CSPM and CIEM tenancy onboarding.
+- title: Ticket Templates
+  label: Ticket templates
+  section: notes
+  category: product
+  icon: file
+  url: /notes/011_ticket_template/templates/
+  description: Connecting a generated ticket to the finding that needs attention.
+- title: Scratch Notes
+  label: Scratch notes
+  section: notes
+  category: reference
+  icon: notebook
+  url: /notes/001_notes/notes-1/
+  description: Small observations and working references, collected along the way.
+- title: Security Tools Cmds
+  label: Security tools
+  section: cmds
+  category: tools
+  icon: terminal
+  url: /cmds/002_security-tools-cmds/
+  description: Working commands for Betterleaks, Checkov, Cloudsplaining, Cloudsploit, and Prowler.
+- title: Compliance Custom Scripts
+  label: Compliance scripts
+  section: cmds
+  category: tools
+  icon: code
+  url: /cmds/001_compliance-custom-script/
+  description: Python and Apps Script helpers to extract, enrich, and convert compliance data.
